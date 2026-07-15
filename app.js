@@ -52,6 +52,23 @@ function roundedRect(ctx, x, y, width, height, radius) {
   ctx.closePath();
 }
 
+function smoothLinePath(ctx, points) {
+  if (!points.length) return;
+  ctx.moveTo(points[0].x, points[0].y);
+  for (let index = 1; index < points.length - 1; index += 1) {
+    const current = points[index];
+    const next = points[index + 1];
+    const midX = (current.x + next.x) / 2;
+    const midY = (current.y + next.y) / 2;
+    ctx.quadraticCurveTo(current.x, current.y, midX, midY);
+  }
+  if (points.length > 1) {
+    const penultimate = points[points.length - 2];
+    const last = points[points.length - 1];
+    ctx.quadraticCurveTo(penultimate.x, penultimate.y, last.x, last.y);
+  }
+}
+
 function text(ctx, value, x, y, options = {}) {
   const {
     size = 12,
@@ -73,7 +90,7 @@ function formatCompact(value) {
   return numberFormatter.format(Math.round(value));
 }
 
-function drawGrid(ctx, left, top, width, height, max, dark = false, ticks = 4) {
+function drawGrid(ctx, left, top, width, height, max, dark = false, ticks = 4, suffix = "") {
   ctx.save();
   ctx.strokeStyle = dark ? palette.gridDark : palette.gridLight;
   ctx.lineWidth = 1;
@@ -84,7 +101,7 @@ function drawGrid(ctx, left, top, width, height, max, dark = false, ticks = 4) {
     ctx.lineTo(left + width, y);
     ctx.stroke();
     const value = max - (max / ticks) * i;
-    text(ctx, formatCompact(value), left - 10, y, {
+    text(ctx, `${formatCompact(value)}${suffix}`, left - 10, y, {
       size: 10,
       color: dark ? palette.muted : palette.darkMuted,
       align: "right",
@@ -109,7 +126,7 @@ function animateChart(canvas) {
     return;
   }
   const start = performance.now();
-  const duration = 1050;
+  const duration = 1350;
   function frame(now) {
     const raw = Math.min(1, (now - start) / duration);
     const eased = 1 - Math.pow(1 - raw, 3);
@@ -270,10 +287,7 @@ registerChart("deltaChart", (progress) => {
 
   ctx.save();
   ctx.beginPath();
-  points.forEach((point, index) => {
-    if (index === 0) ctx.moveTo(point.x, point.y);
-    else ctx.lineTo(point.x, point.y);
-  });
+  smoothLinePath(ctx, points);
   ctx.strokeStyle = palette.blue;
   ctx.lineWidth = 4;
   ctx.setLineDash([plotW * progress, plotW]);
@@ -303,35 +317,58 @@ registerChart("deltaChart", (progress) => {
   });
 });
 
-registerChart("digitalEvolutionChart", (progress) => {
+let digitalChartView = "volume";
+let digitalHover = null;
+let digitalHitAreas = [];
+
+function drawDigitalChart(progress) {
   const canvas = document.getElementById("digitalEvolutionChart");
   const { ctx, width, height } = setupCanvas(canvas);
   const labels = ["Abril", "Maio", "Junho"];
-  const series = [
-    { label: "Leads", values: [3120, 3224, 2630], color: palette.cyan },
-    { label: "Viabilidade", values: [1694, 1591, 1536], color: palette.yellow },
-    { label: "Vendas", values: [718, 794, 813], color: palette.mint },
-  ];
+  const isRate = digitalChartView === "rate";
+  const series = isRate
+    ? [
+        { label: "Conversão final", values: [23.01, 24.63, 30.91], color: palette.orange },
+        { label: "Lead viável", values: [54.29, 49.35, 58.4], color: palette.cyan },
+        { label: "Viável → venda", values: [42.38, 49.91, 52.93], color: palette.mint },
+      ]
+    : [
+        { label: "Leads", values: [3120, 3224, 2630], color: palette.cyan },
+        { label: "Viabilidade", values: [1694, 1591, 1536], color: palette.yellow },
+        { label: "Vendas", values: [718, 794, 813], color: palette.mint },
+      ];
   const compact = width < 560;
   const margins = { left: compact ? 46 : 62, right: compact ? 24 : 52, top: 58, bottom: 48 };
   const plotW = width - margins.left - margins.right;
   const plotH = height - margins.top - margins.bottom;
-  const max = 3500;
-  drawGrid(ctx, margins.left, margins.top, plotW, plotH, max, true, 5);
+  const max = isRate ? 65 : 3500;
+  drawGrid(ctx, margins.left, margins.top, plotW, plotH, max, true, 5, isRate ? "%" : "");
+  digitalHitAreas = [];
 
   series.forEach((item, seriesIndex) => {
     const points = item.values.map((value, index) => ({
       x: margins.left + (plotW / (item.values.length - 1)) * index,
       y: margins.top + plotH - (value / max) * plotH,
     }));
+    if (seriesIndex === 0) {
+      ctx.save();
+      ctx.beginPath();
+      smoothLinePath(ctx, points);
+      ctx.lineTo(points.at(-1).x, margins.top + plotH);
+      ctx.lineTo(points[0].x, margins.top + plotH);
+      ctx.closePath();
+      ctx.fillStyle = item.color;
+      ctx.globalAlpha = 0.07 * progress;
+      ctx.fill();
+      ctx.restore();
+    }
+
     ctx.save();
     ctx.beginPath();
-    points.forEach((point, index) => {
-      if (index === 0) ctx.moveTo(point.x, point.y);
-      else ctx.lineTo(point.x, point.y);
-    });
+    smoothLinePath(ctx, points);
     ctx.strokeStyle = item.color;
     ctx.lineWidth = seriesIndex === 0 ? 5 : 4;
+    ctx.globalAlpha = digitalHover && digitalHover.seriesIndex !== seriesIndex ? 0.22 : 1;
     ctx.shadowColor = item.color;
     ctx.shadowBlur = 13;
     ctx.setLineDash([plotW * progress, plotW]);
@@ -339,12 +376,27 @@ registerChart("digitalEvolutionChart", (progress) => {
     ctx.restore();
 
     points.forEach((point, index) => {
+      digitalHitAreas.push({
+        x: point.x,
+        y: point.y,
+        seriesIndex,
+        index,
+        month: labels[index],
+        label: item.label,
+        value: item.values[index],
+        suffix: isRate ? "%" : "",
+      });
       if (progress < 0.45 + index * 0.12) return;
       ctx.beginPath();
-      ctx.arc(point.x, point.y, seriesIndex === 0 ? 6 : 5, 0, Math.PI * 2);
+      const active = digitalHover?.seriesIndex === seriesIndex && digitalHover?.index === index;
+      ctx.arc(point.x, point.y, active ? 9 : seriesIndex === 0 ? 6 : 5, 0, Math.PI * 2);
       ctx.fillStyle = item.color;
+      ctx.globalAlpha = digitalHover && !active && digitalHover.seriesIndex !== seriesIndex ? 0.3 : 1;
       ctx.fill();
-      text(ctx, formatCompact(item.values[index]), point.x, point.y - 16 - seriesIndex * 2, {
+      const formattedValue = isRate
+        ? `${item.values[index].toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 2 })}%`
+        : formatCompact(item.values[index]);
+      text(ctx, formattedValue, point.x, point.y - 16 - seriesIndex * 2, {
         size: compact ? 9 : 10,
         weight: 800,
         color: item.color,
@@ -372,6 +424,83 @@ registerChart("digitalEvolutionChart", (progress) => {
     text(ctx, item.label, legendX + 16, 18, { size: 10, weight: 700, color: palette.muted });
     legendX += compact ? 92 : 116;
   });
+}
+
+registerChart("digitalEvolutionChart", drawDigitalChart);
+
+const digitalCanvas = document.getElementById("digitalEvolutionChart");
+const digitalTooltip = document.getElementById("digitalChartTooltip");
+const digitalViewButtons = [...document.querySelectorAll("[data-digital-view]")];
+
+function animateDigitalView() {
+  if (reducedMotion) {
+    drawDigitalChart(1);
+    return;
+  }
+  const start = performance.now();
+  const duration = 900;
+  function frame(now) {
+    const raw = Math.min(1, (now - start) / duration);
+    drawDigitalChart(1 - Math.pow(1 - raw, 3));
+    if (raw < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+digitalViewButtons.forEach((button) => {
+  button.setAttribute("aria-pressed", String(button.classList.contains("is-active")));
+  button.addEventListener("click", () => {
+    const nextView = button.dataset.digitalView;
+    if (nextView === digitalChartView) return;
+    digitalChartView = nextView;
+    digitalHover = null;
+    digitalTooltip?.classList.remove("is-visible");
+    digitalViewButtons.forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    digitalCanvas.setAttribute(
+      "aria-label",
+      nextView === "rate"
+        ? "Taxas por mês: conversão final de 23,01%, 24,63% e 30,91%; viabilidade de 54,29%, 49,35% e 58,40%; conversão de viável para venda de 42,38%, 49,91% e 52,93%."
+        : "Abril: 3.120 leads, 1.694 viabilidades, 718 vendas. Maio: 3.224, 1.591 e 794. Junho: 2.630, 1.536 e 813.",
+    );
+    animateDigitalView();
+  });
+});
+
+digitalCanvas?.addEventListener("pointermove", (event) => {
+  const rect = digitalCanvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  const closest = digitalHitAreas.reduce((best, area) => {
+    const distance = Math.hypot(area.x - x, area.y - y);
+    return !best || distance < best.distance ? { ...area, distance } : best;
+  }, null);
+  if (!closest || closest.distance > 34) {
+    if (digitalHover) {
+      digitalHover = null;
+      drawDigitalChart(1);
+    }
+    digitalTooltip?.classList.remove("is-visible");
+    return;
+  }
+  const changed = digitalHover?.seriesIndex !== closest.seriesIndex || digitalHover?.index !== closest.index;
+  digitalHover = closest;
+  if (changed) drawDigitalChart(1);
+  if (digitalTooltip) {
+    digitalTooltip.innerHTML = `<strong>${closest.month} · ${closest.label}</strong><span>${closest.value.toLocaleString("pt-BR", { minimumFractionDigits: closest.suffix ? 1 : 0, maximumFractionDigits: 2 })}${closest.suffix}</span>`;
+    digitalTooltip.style.left = `${Math.min(rect.width - 175, Math.max(4, x))}px`;
+    digitalTooltip.style.top = `${Math.min(rect.height - 70, Math.max(4, y))}px`;
+    digitalTooltip.classList.add("is-visible");
+  }
+});
+
+digitalCanvas?.addEventListener("pointerleave", () => {
+  digitalHover = null;
+  digitalTooltip?.classList.remove("is-visible");
+  drawDigitalChart(1);
 });
 
 registerChart("lossReasonsChart", (progress) => {
@@ -455,7 +584,24 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.12 },
 );
 
-document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+document.querySelectorAll(".reveal").forEach((element, index) => {
+  element.style.setProperty("--reveal-delay", `${(index % 3) * 70}ms`);
+  revealObserver.observe(element);
+});
+
+const hero = document.querySelector(".hero");
+const heroBrandStage = document.querySelector(".hero__brand-stage");
+if (!reducedMotion && window.matchMedia("(pointer: fine)").matches) {
+  hero?.addEventListener("pointermove", (event) => {
+    const rect = hero.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    heroBrandStage.style.transform = `translate3d(${x * 18}px, ${y * 18}px, 0)`;
+  });
+  hero?.addEventListener("pointerleave", () => {
+    heroBrandStage.style.transform = "translate3d(0, 0, 0)";
+  });
+}
 
 function formatCounter(value, decimals, prefix, suffix) {
   return `${prefix}${new Intl.NumberFormat("pt-BR", {

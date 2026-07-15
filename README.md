@@ -2,6 +2,15 @@
 
 Landing page executiva e responsiva para apresentação dos resultados trimestrais de PAP e Digital.
 
+## Experiência
+
+- Identidade visual oficial ST1, com Poppins local e paleta azul, laranja, creme e branco.
+- Narrativa executiva em três atos: sinal, restrição e decisão.
+- Gráficos animados por entrada na viewport e contadores progressivos.
+- Radar Digital alternável entre volume e conversão, com tooltip por ponto.
+- Destaques de performance das cinco carteiras comerciais do Digital.
+- Modo apresentação com navegação por setas e suporte a movimento reduzido.
+
 ## Executar localmente
 
 ```bash
