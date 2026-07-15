@@ -6,12 +6,16 @@
   - `/workspace/scratch/6a829d1b9495/work/pdf/contact-sheet.png`
   - `/workspace/scratch/6a829d1b9495/upload/logo-ST1-03 (2).png`
   - `/workspace/scratch/6a829d1b9495/upload/FireShot Capture 044 - ST1 Internet - Relatório B2C — Junho 2026_ - [relatorio-mensal-de-junto-st-1-inte-eight.vercel.app].pdf`
+  - `/workspace/scratch/6a829d1b9495/upload/capital_brokers_v4_logo_branca_desktop(2).html`
+  - `/workspace/scratch/6a829d1b9495/upload/ST1 Internet _ GrowthPack V26 (Inside Sales) (2).xlsx`
 - implementation screenshot paths:
   - `/workspace/scratch/6a829d1b9495/work/st1-v3-contact-sheet.png`
   - `/workspace/scratch/6a829d1b9495/work/qa-sections/01-hero.png`
   - `/workspace/scratch/6a829d1b9495/work/qa-sections/05-radar.png`
   - `/workspace/scratch/6a829d1b9495/work/qa-sections/07-csat.png`
   - `/workspace/scratch/6a829d1b9495/work/qa-sections/13-presenters.png`
+  - `/workspace/scratch/6a829d1b9495/work/qa-sections/02b-whatsapp.png`
+  - `/workspace/scratch/6a829d1b9495/work/qa-sections/02c-growthpack.png`
 - intended viewports: 1440 × 900 and 390 × 844
 - state: landing page loaded, charts animated, presentation mode available
 
@@ -24,7 +28,7 @@ matrix, FCA, 90-day plan, closing copy, and presenters.
 
 ## Focused region comparison evidence
 
-Completed. Focused screenshots were generated for 13 desktop regions and 13
+Completed. Focused screenshots were generated for 15 desktop regions and 15
 mobile regions. The revisions specifically verified the user-provided print areas.
 
 ## Static checks completed
@@ -45,8 +49,11 @@ mobile regions. The revisions specifically verified the user-provided print area
 - Dense seller data is inside a keyboard-focusable horizontal scroll container.
 - Important chart values are repeated in visible summaries or accessible tables.
 - `prefers-reduced-motion` removes decorative motion and preserves content.
+- Manual motion control pauses particles, chat motion, quality flow, and decorative transitions.
 - Bundled emoji graphics render consistently without depending on the operating system.
 - Desktop and 390 px mobile render without horizontal overflow.
+- Ticket panel opens from the Digital section and directly from the Home.
+- GrowthPack metrics are explicitly separated from the official Digital total.
 
 ## Findings
 
@@ -62,6 +69,9 @@ mobile regions. The revisions specifically verified the user-provided print area
 - Iteration 3: print-guided layout, copy, effectiveness width, delta labels, full
   radar, CRM KPI hierarchy, CSAT stars, deadlines, animated FCA, automation flow,
   and presenter closing were rendered and reviewed in desktop and mobile.
+- Iteration 4: Home rebuilt around lead quality, consultative WhatsApp, ticket history,
+  GrowthPack evidence, recurrence narrative, ambient particles, glass response, and
+  motion controls. Desktop and mobile interactions were exercised without errors.
 
 ## Primary interactions intended for browser test
 
@@ -72,14 +82,16 @@ mobile regions. The revisions specifically verified the user-provided print area
 - Animated counters and canvas charts.
 - Digital chart toggle between volume and conversion.
 - Point-level tooltip on the Digital chart.
-- Hero logo orbit, pointer parallax, staged story rail, and progressive funnel bars.
+- Hero quality engine, particles, pointer glow, staged story rail, and moving quality signal.
+- Hidden ticket history and monthly evolution from January to July.
+- Animated WhatsApp consultative conversation.
 - CSAT explanation toggle.
 - Automation flow, FCA animation, and presentation navigation through the closing.
 
 ## Console errors checked
 
-No console errors or page errors in Chromium. Digital view toggle and CSAT details
-toggle were exercised successfully.
+No console errors or page errors in Chromium. Digital view toggle, CSAT details,
+ticket history, and motion pause were exercised successfully.
 
 ## Final result
 

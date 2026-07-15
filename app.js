@@ -21,6 +21,91 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matc
 const numberFormatter = new Intl.NumberFormat("pt-BR");
 const chartDrawers = new Map();
 const animatedCharts = new WeakSet();
+let motionEnabled = !reducedMotion;
+
+const motionButton = document.getElementById("motionButton");
+
+function updateMotionState() {
+  document.body.classList.toggle("no-motion", !motionEnabled);
+  if (!motionButton) return;
+  motionButton.setAttribute("aria-pressed", String(!motionEnabled));
+  motionButton.textContent = motionEnabled ? "Animações ligadas" : "Animações pausadas";
+}
+
+motionButton?.addEventListener("click", () => {
+  motionEnabled = !motionEnabled;
+  updateMotionState();
+});
+
+updateMotionState();
+
+const ambientCanvas = document.getElementById("ambientNetwork");
+const ambientContext = ambientCanvas?.getContext("2d");
+let ambientWidth = 0;
+let ambientHeight = 0;
+let ambientDpr = 1;
+let ambientPoints = [];
+
+function resizeAmbientNetwork() {
+  if (!ambientCanvas || !ambientContext) return;
+  ambientDpr = Math.min(window.devicePixelRatio || 1, 2);
+  ambientWidth = window.innerWidth;
+  ambientHeight = window.innerHeight;
+  ambientCanvas.width = Math.round(ambientWidth * ambientDpr);
+  ambientCanvas.height = Math.round(ambientHeight * ambientDpr);
+  ambientCanvas.style.width = `${ambientWidth}px`;
+  ambientCanvas.style.height = `${ambientHeight}px`;
+  ambientContext.setTransform(ambientDpr, 0, 0, ambientDpr, 0, 0);
+  const amount = Math.min(72, Math.max(34, Math.floor(ambientWidth / 19)));
+  ambientPoints = Array.from({ length: amount }, (_, index) => ({
+    x: Math.random() * ambientWidth,
+    y: Math.random() * ambientHeight,
+    vx: (Math.random() - 0.5) * 0.24,
+    vy: (Math.random() - 0.5) * 0.24,
+    radius: index % 9 === 0 ? 2.2 : 1.1,
+    color: index % 9 === 0 ? "255,129,0" : "82,223,243",
+  }));
+}
+
+function drawAmbientNetwork() {
+  if (!ambientCanvas || !ambientContext) return;
+  ambientContext.clearRect(0, 0, ambientWidth, ambientHeight);
+  const heroHeight = document.querySelector(".hero")?.offsetHeight || ambientHeight;
+  const heroVisible = window.scrollY < heroHeight * 0.92;
+
+  if (motionEnabled && heroVisible) {
+    ambientPoints.forEach((point) => {
+      point.x += point.vx;
+      point.y += point.vy;
+      if (point.x < 0 || point.x > ambientWidth) point.vx *= -1;
+      if (point.y < 0 || point.y > ambientHeight) point.vy *= -1;
+      ambientContext.beginPath();
+      ambientContext.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
+      ambientContext.fillStyle = `rgba(${point.color},0.7)`;
+      ambientContext.fill();
+    });
+
+    for (let first = 0; first < ambientPoints.length; first += 1) {
+      for (let second = first + 1; second < ambientPoints.length; second += 1) {
+        const a = ambientPoints[first];
+        const b = ambientPoints[second];
+        const distance = Math.hypot(a.x - b.x, a.y - b.y);
+        if (distance > 112) continue;
+        ambientContext.beginPath();
+        ambientContext.moveTo(a.x, a.y);
+        ambientContext.lineTo(b.x, b.y);
+        ambientContext.strokeStyle = `rgba(82,223,243,${(1 - distance / 112) * 0.16})`;
+        ambientContext.lineWidth = 0.8;
+        ambientContext.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(drawAmbientNetwork);
+}
+
+resizeAmbientNetwork();
+drawAmbientNetwork();
 
 function setupCanvas(canvas) {
   const rect = canvas.getBoundingClientRect();
@@ -556,6 +641,30 @@ csatDetailsButton?.addEventListener("click", () => {
   csatDetails.hidden = expanded;
 });
 
+const ticketDetailsButton = document.getElementById("ticketDetailsButton");
+const ticketDetails = document.getElementById("ticketDetails");
+const ticketShortcut = document.getElementById("ticketShortcut");
+
+function setTicketDetails(expanded, moveFocus = false) {
+  if (!ticketDetails || !ticketDetailsButton) return;
+  ticketDetails.hidden = !expanded;
+  ticketDetailsButton.setAttribute("aria-expanded", String(expanded));
+  if (expanded && moveFocus) {
+    requestAnimationFrame(() => {
+      ticketDetails.scrollIntoView({ behavior: motionEnabled ? "smooth" : "auto", block: "center" });
+    });
+  }
+}
+
+ticketDetailsButton?.addEventListener("click", () => {
+  const expanded = ticketDetailsButton.getAttribute("aria-expanded") === "true";
+  setTicketDetails(!expanded);
+});
+
+ticketShortcut?.addEventListener("click", () => {
+  setTicketDetails(true, true);
+});
+
 registerChart("lossReasonsChart", (progress) => {
   const canvas = document.getElementById("lossReasonsChart");
   const { ctx, width, height } = setupCanvas(canvas);
@@ -619,6 +728,7 @@ let resizeTimer;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => {
+    resizeAmbientNetwork();
     chartDrawers.forEach((drawer, canvas) => {
       if (animatedCharts.has(canvas)) drawer(1);
     });
@@ -643,18 +753,41 @@ document.querySelectorAll(".reveal").forEach((element, index) => {
 });
 
 const hero = document.querySelector(".hero");
-const heroBrandStage = document.querySelector(".hero__brand-stage");
+const heroBrandStage = document.querySelector(".hero__quality-engine");
 if (!reducedMotion && window.matchMedia("(pointer: fine)").matches) {
   hero?.addEventListener("pointermove", (event) => {
     const rect = hero.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width - 0.5;
     const y = (event.clientY - rect.top) / rect.height - 0.5;
-    heroBrandStage.style.transform = `translate3d(${x * 18}px, ${y * 18}px, 0)`;
+    if (heroBrandStage && motionEnabled) {
+      heroBrandStage.style.transform = `translate3d(${x * 12}px, ${y * 12}px, 0)`;
+    }
   });
   hero?.addEventListener("pointerleave", () => {
-    heroBrandStage.style.transform = "translate3d(0, 0, 0)";
+    if (heroBrandStage) heroBrandStage.style.transform = "translate3d(0, 0, 0)";
   });
 }
+
+if (window.matchMedia("(pointer: fine)").matches) {
+  document.querySelectorAll(".glass-reactive").forEach((card) => {
+    card.addEventListener("pointermove", (event) => {
+      if (!motionEnabled) return;
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty("--glow-x", `${x}%`);
+      card.style.setProperty("--glow-y", `${y}%`);
+    });
+  });
+}
+
+const qualitySteps = [...document.querySelectorAll(".quality-engine__flow article")];
+let qualityStepIndex = 0;
+setInterval(() => {
+  if (!motionEnabled || document.hidden || qualitySteps.length === 0) return;
+  qualitySteps.forEach((step, index) => step.classList.toggle("is-active", index === qualityStepIndex));
+  qualityStepIndex = (qualityStepIndex + 1) % qualitySteps.length;
+}, 1300);
 
 function formatCounter(value, decimals, prefix, suffix) {
   return `${prefix}${new Intl.NumberFormat("pt-BR", {

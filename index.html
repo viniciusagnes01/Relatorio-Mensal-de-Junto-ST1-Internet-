@@ -14,6 +14,7 @@
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <canvas class="ambient-network" id="ambientNetwork" aria-hidden="true"></canvas>
 
     <header class="topbar" aria-label="Navegação do relatório">
       <a class="topbar__brand" href="#inicio" aria-label="Voltar ao início">
@@ -26,51 +27,80 @@
         <a href="#digital">Digital</a>
         <a href="#decisao">Plano 90 dias</a>
       </nav>
-      <button class="presentation-button" id="presentationButton" type="button">
-        Modo apresentação
-      </button>
+      <div class="topbar__actions">
+        <button class="motion-button" id="motionButton" type="button" aria-pressed="false">
+          Animações ligadas
+        </button>
+        <button class="presentation-button" id="presentationButton" type="button">
+          Modo apresentação
+        </button>
+      </div>
     </header>
 
     <main id="conteudo">
       <section class="hero" id="inicio" aria-labelledby="hero-title">
         <div class="hero__media" role="img" aria-label="Identidade visual oficial da ST1 Internet"></div>
-        <div class="hero__brand-stage" aria-hidden="true">
-          <span class="hero__orbit hero__orbit--one"></span>
-          <span class="hero__orbit hero__orbit--two"></span>
-          <span class="hero__spark hero__spark--one"></span>
-          <span class="hero__spark hero__spark--two"></span>
-          <img src="/assets/st1-logo-white.png" alt="" />
-        </div>
         <div class="hero__content wrap">
-          <p class="hero__period"><span></span>Abril a junho de 2026</p>
-          <h1 id="hero-title">
-            Menos volume.<em>Mais eficiência.</em><b>Crescer melhor.</b>
-          </h1>
-          <p class="hero__lead">
-            O trimestre deixou uma mensagem clara. Crescer não é apenas gerar mais
-            leads. É vender onde a rede pode atender e acompanhar o cliente até a ativação.
-          </p>
-          <div class="hero__signals" aria-label="Principais resultados do trimestre">
-            <article>
-              <span>PAP: vendas em junho</span>
-              <strong class="counter" data-value="2724">0</strong>
-              <small>17,8% acima de abril</small>
-            </article>
-            <article>
-              <span>Digital: conversão em junho</span>
-              <strong class="counter" data-value="30.91" data-decimals="2" data-suffix="%">0</strong>
-              <small>7,90 pontos acima de abril</small>
-            </article>
-            <article>
-              <span>Ativações em junho</span>
-              <strong class="counter" data-value="88.2" data-decimals="1" data-suffix="%">0</strong>
-              <small>apenas 0,5% aguardando instalação</small>
-            </article>
+          <div class="hero__copy">
+            <p class="hero__period"><span></span>Abril a junho de 2026 <b>Relatório B2C</b></p>
+            <h1 id="hero-title">
+              O lead certo <em>vale mais.</em><b>Converte hoje. Sustenta valor amanhã.</b>
+            </h1>
+            <p class="hero__lead">
+              Junho provou que qualidade vence volume. O Digital fez 813 vendas com
+              18,4% menos leads. Agora a ST1 pode transformar essa eficiência em uma
+              jornada consultiva que indica o plano certo, acompanha a ativação e aumenta
+              a chance de permanência.
+            </p>
+            <div class="hero__signals" aria-label="Principais resultados do trimestre">
+              <article>
+                <span>Conversão Digital em junho</span>
+                <strong class="counter" data-value="30.91" data-decimals="2" data-suffix="%">0</strong>
+                <small>melhor resultado do trimestre</small>
+              </article>
+              <article>
+                <span>Lead com cobertura que comprou</span>
+                <strong class="counter" data-value="52.93" data-decimals="2" data-suffix="%">0</strong>
+                <small>qualidade virou venda</small>
+              </article>
+              <article>
+                <span>Lead qualificado que virou venda</span>
+                <strong class="counter" data-value="87.45" data-decimals="2" data-suffix="%">0</strong>
+                <small>recorte GrowthPack de junho</small>
+              </article>
+            </div>
+            <div class="hero__actions">
+              <a class="hero__cta" href="#visao">Ver como qualidade vira receita</a>
+              <button class="hero__secondary" id="ticketShortcut" type="button">Abrir ticket mês a mês</button>
+            </div>
+            <p class="hero__honesty">LTV é a meta de gestão. A base atual mede qualificação, venda e ticket; permanência ainda precisa entrar no mesmo painel.</p>
           </div>
-          <div class="hero__actions">
-            <a class="hero__cta" href="#visao">Ver a história</a>
-            <span>4 capítulos para a decisão</span>
-          </div>
+
+          <aside class="hero__quality-engine glass-reactive" aria-label="Motor de qualidade do Digital">
+            <header class="quality-engine__top">
+              <div><i></i><i></i><i></i></div>
+              <span><b></b> Motor de qualidade ativo</span>
+            </header>
+            <div class="quality-engine__brand">
+              <img src="/assets/st1-logo-white.png" alt="" />
+              <div>
+                <small>Digital ST1</small>
+                <strong>Da conversa à recorrência</strong>
+              </div>
+            </div>
+            <div class="quality-engine__flow" aria-hidden="true">
+              <span class="quality-engine__pulse"></span>
+              <article class="is-active"><i>01</i><div><b>Cobertura</b><small>É possível atender?</small></div></article>
+              <article><i>02</i><div><b>Necessidade</b><small>Como a internet será usada?</small></div></article>
+              <article><i>03</i><div><b>Plano certo</b><small>Valor antes de preço</small></div></article>
+              <article><i>04</i><div><b>Ativação</b><small>Promessa entregue</small></div></article>
+              <article><i>05</i><div><b>Permanência</b><small>Relacionamento que continua</small></div></article>
+            </div>
+            <footer>
+              <div><span>Próximo evento</span><strong>Lead qualificado → Compra</strong></div>
+              <b class="quality-engine__score">Venda consultiva</b>
+            </footer>
+          </aside>
         </div>
         <a class="hero__scroll" href="#visao" aria-label="Avançar para a visão executiva">
           <span>Role para descobrir</span><i aria-hidden="true"></i>
@@ -80,19 +110,20 @@
       <section class="section section--light" id="visao" aria-labelledby="visao-title">
         <div class="wrap">
           <header class="section-heading reveal">
-            <p class="section-index">01. A história em uma frase</p>
-            <h2 id="visao-title">O time ficou mais eficiente. Agora precisa repetir esse resultado todos os meses.</h2>
+            <p class="section-index">01. A tese para o próximo ciclo</p>
+            <h2 id="visao-title">Qualidade do lead é o começo da recorrência.</h2>
             <p>
-              PAP elevou a ativação e reduziu a fila de instalação. Digital converteu mais com
-              menos leads. O próximo ciclo deve proteger esses ganhos e remover os
-              vazamentos que ainda impedem uma escala saudável.
+              Digital converteu mais com menos leads e PAP levou mais vendas à ativação.
+              O próximo passo é conectar cobertura, necessidade, plano, instalação e pós-venda.
+              Assim, a ST1 deixa de competir apenas por preço e passa a ser escolhida pelo valor entregue.
             </p>
           </header>
 
           <div class="story-rail reveal" aria-label="Narrativa executiva do trimestre">
-            <article><span aria-hidden="true"><img src="/assets/emoji/26a1.png" alt="" /></span><div><small>O sinal</small><strong>PAP e Digital ficaram mais eficientes</strong></div></article>
-            <article><span aria-hidden="true"><img src="/assets/emoji/1f9e9.png" alt="" /></span><div><small>O ponto de atenção</small><strong>A receita ainda escapa antes da ativação</strong></div></article>
-            <article><span aria-hidden="true"><img src="/assets/emoji/1f3af.png" alt="" /></span><div><small>A decisão</small><strong>Organizar, melhorar e depois crescer</strong></div></article>
+            <article><span aria-hidden="true"><img src="/assets/emoji/1f9ed.png" alt="" /></span><div><small>Atrair</small><strong>Buscar quem a rede pode atender</strong></div></article>
+            <article><span aria-hidden="true"><img src="/assets/emoji/1f9e9.png" alt="" /></span><div><small>Qualificar</small><strong>Entender cobertura, uso e intenção</strong></div></article>
+            <article><span aria-hidden="true"><img src="/assets/emoji/1f3af.png" alt="" /></span><div><small>Vender certo</small><strong>Indicar o plano que resolve a necessidade</strong></div></article>
+            <article><span aria-hidden="true"><img src="/assets/emoji/1f4ac.png" alt="" /></span><div><small>Permanecer</small><strong>Acompanhar ativação, satisfação e evolução</strong></div></article>
           </div>
 
           <div class="dual-thesis">
@@ -114,11 +145,11 @@
 
             <article class="thesis-card thesis-card--digital reveal">
               <div class="thesis-card__label">Digital</div>
-              <h3>Junho quebrou a lógica de que mais lead significa mais venda.</h3>
+              <h3>Junho mostrou que o lead qualificado vale mais que o lead barato.</h3>
               <p>
                 De maio para junho, os leads caíram 18,4%, as vendas cresceram 2,4%
-                e a conversão avançou 6,28 pontos. O ganho veio de leads com melhor
-                chance de compra, não de mais volume.
+                e a conversão avançou 6,28 pontos. A próxima vantagem é usar o WhatsApp
+                para entender o cliente e defender valor, não apenas informar preço.
               </p>
               <ul class="metric-list">
                 <li><strong>30,91%</strong><span>conversão final em junho</span></li>
@@ -132,8 +163,8 @@
           <aside class="decision-strip reveal" aria-label="Direção recomendada">
             <span>Decisão do próximo ciclo</span>
             <p>
-              Manter o bom resultado de junho e aumentar o volume apenas nas regiões,
-              campanhas e públicos que tragam cobertura, ativação e receita.
+              Escalar apenas os públicos com cobertura e intenção, transformar o WhatsApp
+              em uma conversa consultiva e medir ticket, ativação e permanência por origem.
             </p>
           </aside>
         </div>
@@ -348,9 +379,9 @@
           <header class="track-header reveal">
             <div>
               <p class="section-index">03. Vendas pelo Digital</p>
-              <h2 id="digital-title">Junho vendeu mais com menos leads. Agora é hora de repetir o que funcionou.</h2>
+              <h2 id="digital-title">No Digital, qualidade precisa virar uma máquina repetível de receita.</h2>
             </div>
-            <span class="source-tag source-tag--crm">Resultado oficial e base do CRM até 18/06</span>
+            <span class="source-tag source-tag--crm">Resultado oficial, CRM até 18/06 e GrowthPack publicado</span>
           </header>
 
           <div class="month-grid">
@@ -385,20 +416,101 @@
 
           <article class="narrative-pivot reveal">
             <div class="narrative-pivot__equation" aria-label="Sequência que explica o resultado">
-              <span>Menos desperdício</span>
+              <span>Cobertura confirmada</span>
               <i aria-hidden="true">→</i>
-              <span>mais leads atendíveis</span>
+              <span>necessidade entendida</span>
               <i aria-hidden="true">→</i>
-              <span>mais tempo por oportunidade</span>
+              <span>plano certo</span>
               <i aria-hidden="true">→</i>
-              <span>mais conversão</span>
+              <span>ativação acompanhada</span>
+              <i aria-hidden="true">→</i>
+              <span>mais chance de permanência</span>
             </div>
             <p>
-              O resultado é claro: o time vendeu melhor. A explicação mais provável é
-              simples. Leads com melhor chance de compra receberam mais atenção. Antes
-              de aumentar a mídia, precisamos confirmar quais campanhas e cidades fizeram isso acontecer.
+              A recorrência começa antes da venda. Quando o time confirma cobertura,
+              entende o uso e indica o plano certo, o cliente percebe valor e chega à
+              instalação com a expectativa correta.
             </p>
           </article>
+
+          <section class="whatsapp-lab reveal" aria-labelledby="whatsapp-title">
+            <div class="whatsapp-lab__copy">
+              <p class="section-index">WhatsApp consultivo</p>
+              <h3 id="whatsapp-title">A conversa deixa de ser balcão e passa a construir valor.</h3>
+              <p>
+                O objetivo não é responder apenas preço e velocidade. É descobrir se a ST1
+                atende o endereço, entender o uso da casa e mostrar por que o plano indicado
+                faz sentido para aquela rotina.
+              </p>
+              <ol>
+                <li><span>01</span><div><b>Confirmar cobertura</b><small>Bairro, rua e ponto de referência antes da oferta.</small></div></li>
+                <li><span>02</span><div><b>Entender o uso</b><small>Home office, estudos, jogos, TV e quantidade de pessoas.</small></div></li>
+                <li><span>03</span><div><b>Indicar com contexto</b><small>Explicar o plano pelo problema resolvido, não apenas pelo preço.</small></div></li>
+                <li><span>04</span><div><b>Continuar depois da venda</b><small>Ativação, satisfação e momento certo para upgrade ou indicação.</small></div></li>
+              </ol>
+            </div>
+
+            <div class="whatsapp-phone glass-reactive" aria-label="Exemplo animado de conversa consultiva no WhatsApp">
+              <header>
+                <span class="whatsapp-phone__avatar"><img src="/assets/st1-logo-white.png" alt="" /></span>
+                <div><b>ST1 Internet</b><small>atendimento inteligente</small></div>
+                <i aria-hidden="true">•••</i>
+              </header>
+              <div class="whatsapp-phone__chat">
+                <p class="chat-message chat-message--st1">Oi, Ana! Antes de indicar um plano, posso confirmar seu bairro e como você mais usa a internet?</p>
+                <p class="chat-message chat-message--lead">Cohab. Trabalho em casa e usamos duas TVs à noite.</p>
+                <p class="chat-message chat-message--st1">Perfeito. A cobertura está disponível. Vou te mostrar a opção que sustenta trabalho e entretenimento sem vender além do que você precisa.</p>
+                <div class="chat-quality-tags"><span>Cobertura confirmada</span><span>Uso mapeado</span><span>SQL pronto</span></div>
+                <div class="chat-typing" aria-label="ST1 está digitando"><i></i><i></i><i></i></div>
+              </div>
+              <footer><span>Automação organiza</span><b>O time humano orienta</b></footer>
+            </div>
+          </section>
+
+          <section class="growthpack-proof reveal" aria-labelledby="growthpack-title">
+            <header>
+              <div>
+                <span>Recorte de mídia atribuída</span>
+                <h3 id="growthpack-title">Junho trouxe mais qualidade comercial com menos custo.</h3>
+              </div>
+              <span class="scope-note">GrowthPack mensal. Não representa o total oficial do Digital.</span>
+            </header>
+            <div class="growthpack-proof__metrics">
+              <article><span>Lead qualificado que virou venda</span><strong>87,45%</strong><small>6,39 pontos acima de maio</small></article>
+              <article><span>Custo por venda</span><strong>R$ 27,08</strong><small>62,5% menor que em maio</small></article>
+              <article><span>Custo por lead qualificado</span><strong>R$ 23,68</strong><small>59,5% menor que em maio</small></article>
+              <article><span>Receita atribuída</span><strong>R$ 20.414</strong><small>84,8% maior que em maio</small></article>
+            </div>
+            <div class="growthpack-proof__action">
+              <div><b>A conversão ganhou força. O ticket ainda pede estratégia.</b><span>Abra o histórico para ver a evolução real, mês a mês.</span></div>
+              <button class="ticket-details-button" id="ticketDetailsButton" type="button" aria-expanded="false" aria-controls="ticketDetails">
+                Ver ticket e evolução mensal <span aria-hidden="true">+</span>
+              </button>
+            </div>
+
+            <div class="ticket-details" id="ticketDetails" hidden>
+              <header>
+                <div><span>Ticket médio do Digital</span><h4>O valor ficou estável no trimestre; o próximo ganho é vender melhor, não vender mais caro a qualquer custo.</h4></div>
+                <div class="ticket-details__summary"><b>R$ 101,89</b><small>média ponderada de abril a junho</small></div>
+              </header>
+              <p class="ticket-swipe">Deslize para ver todos os meses →</p>
+              <div class="ticket-timeline" aria-label="Ticket médio de janeiro a julho de 2026">
+                <article style="--ticket:84%"><span>Jan</span><i></i><strong>R$ 113,18</strong><small>base</small></article>
+                <article style="--ticket:80%"><span>Fev</span><i></i><strong>R$ 112,03</strong><small class="is-down">1,01% menor</small></article>
+                <article style="--ticket:72%"><span>Mar</span><i></i><strong>R$ 109,86</strong><small class="is-down">1,94% menor</small></article>
+                <article style="--ticket:44%"><span>Abr</span><i></i><strong>R$ 102,06</strong><small class="is-down">7,10% menor</small></article>
+                <article style="--ticket:48%"><span>Mai</span><i></i><strong>R$ 103,25</strong><small class="is-up">1,17% maior</small></article>
+                <article style="--ticket:40%"><span>Jun</span><i></i><strong>R$ 101,06</strong><small class="is-down">2,12% menor</small></article>
+                <article class="is-partial" style="--ticket:82%"><span>Jul*</span><i></i><strong>R$ 112,85</strong><small class="is-up">11,67% maior</small></article>
+              </div>
+              <div class="ticket-details__reading">
+                <article><b>O que já aconteceu</b><p>Junho converteu melhor e reduziu o custo de venda, mas o ticket ficou 2,12% abaixo de maio.</p></article>
+                <article><b>O que fazer agora</b><p>Usar a necessidade do cliente para indicar o plano certo e criar ofertas de upgrade apenas depois de ativação e satisfação.</p></article>
+                <article><b>Como proteger LTV</b><p>Medir ticket junto com ativação, permanência em 30, 90 e 180 dias e motivo de saída por origem.</p></article>
+              </div>
+              <p class="ticket-details__source">Janeiro a junho fechados. Julho parcial na planilha publicada em 14/07. A base atual não possui tempo de permanência suficiente para calcular LTV real.</p>
+            </div>
+          </section>
 
           <div class="dashboard-grid dashboard-grid--efficiency">
             <article class="panel panel--wide reveal">
@@ -681,39 +793,39 @@
           <section class="fca reveal" aria-labelledby="fca-title">
             <header>
               <p class="section-index">Fato, causa e ação</p>
-              <h3 id="fca-title">Junho mostrou o caminho. Agora precisamos repetir o acerto.</h3>
-              <p>Uma leitura simples para sair do número e chegar à ação.</p>
+              <h3 id="fca-title">Junho mostrou o caminho. Agora a qualidade precisa continuar depois da venda.</h3>
+              <p>Uma leitura simples para ligar conversão, ticket e permanência.</p>
             </header>
             <div class="fca-grid">
               <article>
                 <div class="fca-icon" aria-hidden="true"><img src="/assets/emoji/1f4c8.png" alt="" /></div>
                 <span>O que aconteceu</span>
-                <h4>Junho vendeu mais com 594 leads a menos.</h4>
+                <h4>Junho vendeu mais com 594 leads a menos, mas o ticket ficou estável.</h4>
                 <p>
-                  O Digital fez 813 vendas e chegou a 30,91% de conversão. Foi o
-                  melhor resultado do trimestre, mesmo recebendo menos leads que maio.
+                  O Digital fez 813 vendas e chegou a 30,91% de conversão. No recorte
+                  de mídia, o ticket foi R$ 101,06, 2,12% abaixo de maio.
                 </p>
               </article>
               <article>
                 <div class="fca-icon" aria-hidden="true"><img src="/assets/emoji/1f50e.png" alt="" /></div>
-                <span>Por que pode ter acontecido</span>
-                <h4>O time recebeu leads com melhor chance de compra.</h4>
+                <span>O que os dados sugerem</span>
+                <h4>A qualificação melhorou mais rápido que o valor da oferta.</h4>
                 <p>
-                  Campanhas mais focadas, consulta de cobertura e um atendimento mais
-                  organizado podem ter dado ao time mais tempo para vender bem.
+                  Mais SQL chegaram à venda e o custo caiu. Ainda falta usar a conversa
+                  para entender o uso e indicar o plano com melhor encaixe.
                 </p>
               </article>
               <article>
                 <div class="fca-icon" aria-hidden="true"><img src="/assets/emoji/1f680.png" alt="" /></div>
                 <span>O que fazer agora</span>
-                <h4>Repetir o que vende e cortar o que gera desperdício.</h4>
+                <h4>Transformar o WhatsApp em consultoria e acompanhar o cliente.</h4>
                 <p>
-                  Aumentar as campanhas e cidades que trazem vendas. Recuperar leads
-                  com chance real e cobrar origem, prazo e próximo passo no CRM.
+                  Confirmar cobertura, mapear necessidade, explicar valor e acompanhar
+                  ativação, satisfação e evolução do plano em 30, 90 e 180 dias.
                 </p>
               </article>
             </div>
-            <div class="fca-result"><span>Resultado esperado</span><strong>Mais vendas com o mesmo time e menos esforço perdido.</strong></div>
+            <div class="fca-result"><span>Resultado esperado</span><strong>Mais clientes bem atendidos, mais permanência e mais valor por relacionamento.</strong></div>
           </section>
         </div>
       </section>
@@ -722,57 +834,58 @@
         <div class="wrap">
           <header class="section-heading section-heading--center reveal">
             <p class="section-index">04. Plano para os próximos 90 dias</p>
-            <h2 id="decisao-title">Organizar. Melhorar. Crescer.</h2>
+            <h2 id="decisao-title">Qualificar. Entregar. Permanecer.</h2>
             <p>
-              Primeiro arrumamos a base. Depois melhoramos o atendimento. Só então
-              aumentamos a mídia nas cidades e campanhas que realmente vendem.
+              Primeiro identificamos o lead certo. Depois indicamos e entregamos o plano
+              certo. Por fim, acompanhamos a experiência para proteger recorrência e LTV.
             </p>
           </header>
 
           <div class="automation-flow reveal" aria-label="Fluxo automatizado recomendado">
-            <header><span>Automação recomendada</span><strong>Do lead à ativação, sem perder o próximo passo.</strong></header>
+            <header><span>Automação recomendada</span><strong>Do primeiro contato à permanência, sem perder o contexto.</strong></header>
             <div>
               <article><i aria-hidden="true"><img src="/assets/emoji/1f4e5.png" alt="" /></i><b>Lead entra</b><small>origem registrada</small></article>
               <article><i aria-hidden="true"><img src="/assets/emoji/1f4e1.png" alt="" /></i><b>Cobertura consultada</b><small>OZMap automático</small></article>
-              <article><i aria-hidden="true"><img src="/assets/emoji/2699-fe0f.png" alt="" /></i><b>Vendedor definido</b><small>carga equilibrada</small></article>
-              <article><i aria-hidden="true"><img src="/assets/emoji/23f1-fe0f.png" alt="" /></i><b>Prazo acompanhado</b><small>alerta de atraso</small></article>
-              <article><i aria-hidden="true"><img src="/assets/emoji/2705.png" alt="" /></i><b>Cliente ativado</b><small>venda concluída</small></article>
+              <article><i aria-hidden="true"><img src="/assets/emoji/1f50e.png" alt="" /></i><b>Uso entendido</b><small>qualidade registrada</small></article>
+              <article><i aria-hidden="true"><img src="/assets/emoji/1f4ac.png" alt="" /></i><b>Plano orientado</b><small>argumento por necessidade</small></article>
+              <article><i aria-hidden="true"><img src="/assets/emoji/2705.png" alt="" /></i><b>Cliente ativado</b><small>promessa entregue</small></article>
+              <article><i aria-hidden="true"><img src="/assets/emoji/1f3af.png" alt="" /></i><b>Relacionamento ativo</b><small>30, 90 e 180 dias</small></article>
             </div>
           </div>
 
           <div class="roadmap">
             <article class="roadmap-card reveal">
               <span>Dias 1 a 30</span>
-              <h3>Deixar o CRM confiável</h3>
+              <h3>Deixar a qualificação confiável</h3>
               <ul>
-                <li>Campos obrigatórios de origem, cidade, motivo e próximo passo.</li>
-                <li>Prazo diário para o primeiro contato.</li>
-                <li>Conversa individual e plano de ação por vendedor.</li>
-                <li>Conferência semanal de perdas e conversas.</li>
+                <li>Origem, endereço, cobertura, uso e próximo passo obrigatórios.</li>
+                <li>Marcar viabilidade e qualificação sem depender de anotação manual.</li>
+                <li>Roteiro de WhatsApp com perguntas simples e resposta humana.</li>
+                <li>Conferência semanal de qualidade e motivo de perda.</li>
               </ul>
-              <footer><b>Meta da fase</b> menos de 5% sem origem e menos de 10% sem próxima atividade</footer>
+              <footer><b>Meta da fase</b> menos de 5% sem origem e todos os leads qualificados com cobertura e necessidade registradas</footer>
             </article>
             <article class="roadmap-card reveal">
               <span>Dias 31 a 60</span>
-              <h3>Atender melhor cada oportunidade</h3>
+              <h3>Vender o plano certo e ativar bem</h3>
               <ul>
-                <li>Sequência de contatos para cada etapa e motivo de perda.</li>
+                <li>Argumento por perfil de uso, sem empurrar velocidade.</li>
                 <li>Consulta automática de cobertura antes da distribuição.</li>
-                <li>Distribuição de leads conforme a carga de cada vendedor.</li>
-                <li>Painel com tempo parado, recuperação e mês de entrada.</li>
+                <li>Alerta para venda sem próximo passo de instalação.</li>
+                <li>Painel com ticket, tipo de plano, ativação e origem.</li>
               </ul>
-              <footer><b>Meta da fase</b> mais leads avaliados e menos fila parada</footer>
+              <footer><b>Meta da fase</b> manter conversão, elevar adequação do plano e reduzir vendas sem ativação</footer>
             </article>
             <article class="roadmap-card roadmap-card--featured reveal">
               <span>Dias 61 a 90</span>
-              <h3>Aumentar vendas com qualidade</h3>
+              <h3>Começar a medir permanência e LTV</h3>
               <ul>
-                <li>Recuperar volume apenas em bairros e campanhas com cobertura.</li>
-                <li>Oferta de MESH, PME, planos maiores e indicação por perfil.</li>
-                <li>Públicos de mídia formados por vendas e perdas bem classificadas.</li>
-                <li>Previsão de vendas por vendedor, origem e cidade.</li>
+                <li>Contato de satisfação após ativação e no primeiro boleto.</li>
+                <li>Acompanhar permanência em 30, 90 e 180 dias por origem.</li>
+                <li>Oferecer upgrade apenas quando houver uso e satisfação.</li>
+                <li>Reinvestir onde venda, ativação e permanência caminham juntas.</li>
               </ul>
-              <footer><b>Meta da fase</b> manter a conversão enquanto o volume cresce com controle</footer>
+              <footer><b>Meta da fase</b> criar a primeira leitura de LTV por origem e aumentar valor sem perder qualidade</footer>
             </article>
           </div>
 
@@ -795,9 +908,9 @@
 
           <blockquote class="closing reveal">
             <p>
-              Nos próximos 90 dias, o foco é simples. Cuidar melhor de cada oportunidade,
-              vender onde a rede pode atender e acompanhar o cliente até a ativação.
-              Assim, a ST1 cresce com qualidade, previsão e receita.
+              O próximo salto da ST1 não vem de empilhar leads. Vem de transformar boas
+              conversas em clientes ativados, satisfeitos e bem atendidos por mais tempo.
+              É assim que conversão vira recorrência, ticket saudável e LTV.
             </p>
             <footer>Direção recomendada para julho a setembro de 2026</footer>
           </blockquote>
@@ -815,14 +928,14 @@
                 funil e perdas. É uma base acumulada e fica separada do resultado mensal.
               </p>
               <p>
-                <b>GrowthPack:</b> a planilha atualizada em 14/07 confirmou a estrutura,
-                os campos e os meses de entrada. Como a base atualiza etapas antigas,
-                os painéis mantêm o mesmo recorte das capturas em toda a apresentação.
+                <b>GrowthPack:</b> a <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDKVXTd-f5NT33ZPbe2iIt_JN_pMzw7GBmCq4gDhK5yWBx-GDL68hjhJwaCpsDKxE2t1Z8YNd4aZu0/pubhtml" target="_blank" rel="noreferrer">planilha publicada</a>
+                em 14/07 sustenta o ticket mensal, CAC, custo por SQL, receita atribuída
+                e as automações de viabilidade, qualificação, oportunidade, compra e reativação.
               </p>
               <p>
-                <b>Ticket médio:</b> a base não mostra um aumento claro no trimestre.
-                O tipo de plano e as ofertas são tratados como próximo passo, não como
-                resultado já conquistado.
+                <b>Ticket e LTV:</b> o ticket ponderado de abril a junho foi R$ 101,89.
+                A base ainda não mede permanência por grupo de entrada; por isso, LTV aparece
+                como meta de gestão, não como resultado já comprovado.
               </p>
             </div>
           </details>

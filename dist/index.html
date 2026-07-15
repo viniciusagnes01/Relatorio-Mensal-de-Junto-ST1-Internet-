@@ -9,12 +9,13 @@
     />
     <meta name="theme-color" content="#002f90" />
     <title>ST1 Internet | Relatório B2C | Junho 2026</title>
-    <script type="module" crossorigin src="/assets/index-C8HWwaH7.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CcwbQaLO.css">
+    <script type="module" crossorigin src="/assets/index-Bjx19qQo.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Ce8nepCr.css">
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <canvas class="ambient-network" id="ambientNetwork" aria-hidden="true"></canvas>
 
     <header class="topbar" aria-label="Navegação do relatório">
       <a class="topbar__brand" href="#inicio" aria-label="Voltar ao início">
@@ -27,51 +28,80 @@
         <a href="#digital">Digital</a>
         <a href="#decisao">Plano 90 dias</a>
       </nav>
-      <button class="presentation-button" id="presentationButton" type="button">
-        Modo apresentação
-      </button>
+      <div class="topbar__actions">
+        <button class="motion-button" id="motionButton" type="button" aria-pressed="false">
+          Animações ligadas
+        </button>
+        <button class="presentation-button" id="presentationButton" type="button">
+          Modo apresentação
+        </button>
+      </div>
     </header>
 
     <main id="conteudo">
       <section class="hero" id="inicio" aria-labelledby="hero-title">
         <div class="hero__media" role="img" aria-label="Identidade visual oficial da ST1 Internet"></div>
-        <div class="hero__brand-stage" aria-hidden="true">
-          <span class="hero__orbit hero__orbit--one"></span>
-          <span class="hero__orbit hero__orbit--two"></span>
-          <span class="hero__spark hero__spark--one"></span>
-          <span class="hero__spark hero__spark--two"></span>
-          <img src="/assets/st1-logo-white-Bha_TECo.png" alt="" />
-        </div>
         <div class="hero__content wrap">
-          <p class="hero__period"><span></span>Abril a junho de 2026</p>
-          <h1 id="hero-title">
-            Menos volume.<em>Mais eficiência.</em><b>Crescer melhor.</b>
-          </h1>
-          <p class="hero__lead">
-            O trimestre deixou uma mensagem clara. Crescer não é apenas gerar mais
-            leads. É vender onde a rede pode atender e acompanhar o cliente até a ativação.
-          </p>
-          <div class="hero__signals" aria-label="Principais resultados do trimestre">
-            <article>
-              <span>PAP: vendas em junho</span>
-              <strong class="counter" data-value="2724">0</strong>
-              <small>17,8% acima de abril</small>
-            </article>
-            <article>
-              <span>Digital: conversão em junho</span>
-              <strong class="counter" data-value="30.91" data-decimals="2" data-suffix="%">0</strong>
-              <small>7,90 pontos acima de abril</small>
-            </article>
-            <article>
-              <span>Ativações em junho</span>
-              <strong class="counter" data-value="88.2" data-decimals="1" data-suffix="%">0</strong>
-              <small>apenas 0,5% aguardando instalação</small>
-            </article>
+          <div class="hero__copy">
+            <p class="hero__period"><span></span>Abril a junho de 2026 <b>Relatório B2C</b></p>
+            <h1 id="hero-title">
+              O lead certo <em>vale mais.</em><b>Converte hoje. Sustenta valor amanhã.</b>
+            </h1>
+            <p class="hero__lead">
+              Junho provou que qualidade vence volume. O Digital fez 813 vendas com
+              18,4% menos leads. Agora a ST1 pode transformar essa eficiência em uma
+              jornada consultiva que indica o plano certo, acompanha a ativação e aumenta
+              a chance de permanência.
+            </p>
+            <div class="hero__signals" aria-label="Principais resultados do trimestre">
+              <article>
+                <span>Conversão Digital em junho</span>
+                <strong class="counter" data-value="30.91" data-decimals="2" data-suffix="%">0</strong>
+                <small>melhor resultado do trimestre</small>
+              </article>
+              <article>
+                <span>Lead com cobertura que comprou</span>
+                <strong class="counter" data-value="52.93" data-decimals="2" data-suffix="%">0</strong>
+                <small>qualidade virou venda</small>
+              </article>
+              <article>
+                <span>Lead qualificado que virou venda</span>
+                <strong class="counter" data-value="87.45" data-decimals="2" data-suffix="%">0</strong>
+                <small>recorte GrowthPack de junho</small>
+              </article>
+            </div>
+            <div class="hero__actions">
+              <a class="hero__cta" href="#visao">Ver como qualidade vira receita</a>
+              <button class="hero__secondary" id="ticketShortcut" type="button">Abrir ticket mês a mês</button>
+            </div>
+            <p class="hero__honesty">LTV é a meta de gestão. A base atual mede qualificação, venda e ticket; permanência ainda precisa entrar no mesmo painel.</p>
           </div>
-          <div class="hero__actions">
-            <a class="hero__cta" href="#visao">Ver a história</a>
-            <span>4 capítulos para a decisão</span>
-          </div>
+
+          <aside class="hero__quality-engine glass-reactive" aria-label="Motor de qualidade do Digital">
+            <header class="quality-engine__top">
+              <div><i></i><i></i><i></i></div>
+              <span><b></b> Motor de qualidade ativo</span>
+            </header>
+            <div class="quality-engine__brand">
+              <img src="/assets/st1-logo-white-Bha_TECo.png" alt="" />
+              <div>
+                <small>Digital ST1</small>
+                <strong>Da conversa à recorrência</strong>
+              </div>
+            </div>
+            <div class="quality-engine__flow" aria-hidden="true">
+              <span class="quality-engine__pulse"></span>
+              <article class="is-active"><i>01</i><div><b>Cobertura</b><small>É possível atender?</small></div></article>
+              <article><i>02</i><div><b>Necessidade</b><small>Como a internet será usada?</small></div></article>
+              <article><i>03</i><div><b>Plano certo</b><small>Valor antes de preço</small></div></article>
+              <article><i>04</i><div><b>Ativação</b><small>Promessa entregue</small></div></article>
+              <article><i>05</i><div><b>Permanência</b><small>Relacionamento que continua</small></div></article>
+            </div>
+            <footer>
+              <div><span>Próximo evento</span><strong>Lead qualificado → Compra</strong></div>
+              <b class="quality-engine__score">Venda consultiva</b>
+            </footer>
+          </aside>
         </div>
         <a class="hero__scroll" href="#visao" aria-label="Avançar para a visão executiva">
           <span>Role para descobrir</span><i aria-hidden="true"></i>
@@ -81,19 +111,20 @@
       <section class="section section--light" id="visao" aria-labelledby="visao-title">
         <div class="wrap">
           <header class="section-heading reveal">
-            <p class="section-index">01. A história em uma frase</p>
-            <h2 id="visao-title">O time ficou mais eficiente. Agora precisa repetir esse resultado todos os meses.</h2>
+            <p class="section-index">01. A tese para o próximo ciclo</p>
+            <h2 id="visao-title">Qualidade do lead é o começo da recorrência.</h2>
             <p>
-              PAP elevou a ativação e reduziu a fila de instalação. Digital converteu mais com
-              menos leads. O próximo ciclo deve proteger esses ganhos e remover os
-              vazamentos que ainda impedem uma escala saudável.
+              Digital converteu mais com menos leads e PAP levou mais vendas à ativação.
+              O próximo passo é conectar cobertura, necessidade, plano, instalação e pós-venda.
+              Assim, a ST1 deixa de competir apenas por preço e passa a ser escolhida pelo valor entregue.
             </p>
           </header>
 
           <div class="story-rail reveal" aria-label="Narrativa executiva do trimestre">
-            <article><span aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADSElEQVR4AeTbA4xcfRRA8Z03n23bNqpoN6jNoLZtO9qgtm3btm27HZWD2xPUegruv5P8Yp3BnYf70jS9ZPzfz6MCjkPQGy+pCfAY/zoa3I4HzuPdpyH+Q3RGGAJBCrvxocnhAXyFAUhC7hJHQzxncvzfmIQE5D7b8I3Jn35eLHtoPFAXz5sY/jxKYRtSkIdYj59MjH8B9XHikfFAPTxnWvx7aIuzkMdYhd9NG3ZfIBPXII8RQx0ETYm38BfGQWyYja9Nik/HAiQhTxBCLZPii2GjrXhgAT4zZdJXwQGkIDZcRG1TTmha4xzEgWX4UHv85+iOMMSBEGpq/71/h/5IQBxIYSXe1Rz/HxYiCXEohFKwtMbnxVqkIA4lMQOvaox/CWWwz1U8EEFuWNriX0MDnIN4MAHvaIv/AF1xCQJ4+vQDmuK/xVBEIR6NxIeaht3fmIwbEI9CKKAl/lnkwCbEIT4Yhg+1XLoqgW1IQnywBxka4t9ERZyA+GgVKqAIivkoDz70K/5jdMBFiBIxtPIj/mv0QRiizFiv8b9hIq5AlImgmdvwILJhMeIQZc6jDt52O+lzYTeSEEVSOIzqeNlN/MuojsNIQRRJYjdy4Xk38W+jDs5DlIljMbIh6PZ33wwRiDJXMBG/eZ34YyHKhNEHX/vxf98KMYgSF9EBH/u5kpIHxXxUBBWwCuKjE6iINzWcQ2Rgj4+TfhtK4Hkti07DfJz0m5ADz2q5dlAAIYhHNzAZf8PStOY2EuJRFEPxrbYFiNw+HFdcQld8oO1K8TuYAPHgHBrgNW3xlsdPP4V9KIOXNN4hehUzkHQZvxZ5Nd8bLOVy8iexEP/B0npn+F2sRAriQAL98R0szXsBNV18+mF0x+cmrLcvczHpW+N1E3aBauOig2F3AFXwggnxn2GBg2G3EcVgmbIDWAshm/ELkG5S/NeYDbFhHP4yKT6IOjauJF1DJr5AwKSt799tXO05i7Z4z7Rd/+dQ7wmT/gTq4wUTn/T4CesfE78NpUx+xqcu5CESWIa8aaa+hEfXsO0R8ZPwNwKmxj+Hhog/5D9+AL5CwPRHWncjBYEgjM76H2m1f8p7HgLBcTTwcEKjcif45mYgeT55qJX0AEohj7W+UHjCAAAAAElFTkSuQmCC" alt="" /></span><div><small>O sinal</small><strong>PAP e Digital ficaram mais eficientes</strong></div></article>
-            <article><span aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEgElEQVR4AWKgN6jYGMkPxGZArAvEfEDMyDBSAKB8O4Bs64kDOC7pKk26/qezapSCdJniX6wUULVShSoFmBSopi2tQmBa1FplFTCgAABFBkg2G7UosKIhUWzNZJA2XTZZG9K82xdBnSy9l77d617wAbi83y/3cr/73YVg+xFFAZd4hd5WCPwehrEHcU0ZO/A7PfgJJCHq+IUo/E4Mvh2z+ATRQAmb6HBS8D5EkIUBcYM8VuB1QvCd2EIBwoQ8luFT+Aw3erCIGJI1cawhgDa7gn+JIkQTzrAE3w2/K+PYR7HODCshhRC8OoPvwkYzwUvOMQ/PHz5nEmmFcU4RQpuO4F0I4yeEBXKYkh++Nu1jEIpSCOhIwBO8hbCIgWNMw3styav4DqGohDUdCRhFFsJCBr5gHWOYwxGESXG9CbDeBTLIQzQhqf8VsJ/2BLgxgwyquEIVwm6I6VoGPRhEGLtI4AQXEDYpYtGOPYAPXehDBDkIzQzso8fu0tiDBZQ1B5/GONxWfKNBjNYE0W5yjCEcQGhQwBtM4t5tg7+PMN4hW/MOM/CYGOcx4hqCP8IqHlm1sdnADwhJGoMmxhpBSsM3Pwe3jl1dBWG0K44X0rAsZvDMqmbGlhy85Aq7inv3AbzXMP0rWEfHbQuaiEIzo4oEum4YrxvbqEBo8BnTcDe7pZ3FVwgFJ+hrMN5DvEAJQqNjTMFj9pufwKHJTUoEHXUSGcC27uBrDOQwj07VBAzjI4RJ37CAIQTxFM/xARUIG51jCT6VE5s9iCaVcIAEDm2u/WVnWIa30VldFMLBTuWWu7xEnUE4XAGb8MsJCOISogWUEEWvvE6/RhmiBVxiR05CL3ZaaCaU8RrdchKiKLXQTAjKvwd+bKIA4XBnGKi3KnixglMIB4viwZ9qAy+W79jyeIFDJHBwy1d1D/0qW+IlnEPYqIIPeI6nCGIIC/gGYdJHDJtpiswjB8OmdXsbAbikZ+tAxGTZfYgJuM12dKdwbEPwL/CwwbP14QRCwVfMwtVsk2QanzVO+210K9xHSKCqUAZHbtUrrE25dU1b3PcYUGzd7eLqhpOhLfis6BU+QwbiL6oiZOK8IoxKg+BfotOqw885DUVSCiMmnmsQaQjJD2xYFfwjrOJIw/SP47HJH+mZOgc3Ydy34pbnJN5oLI8PMKTh6E5pyo8jDUPzTm0BHrtPdHuwb1MBlEMEfeiCD+26E7CIos21/wkS2EUYg9pmhnQXzzbSdZsMZuDWkYAkxB30Fk/ucgLyyPzFs4EsRnUkIN7k5YQ5jGEdX2D8qwlYM9l0+I5VuK41VaZxDONffAUCJm90xNAjjdGGKQtviP1EGC4dCWhDCKeK9ftYg1J13oLOUhEb6NJZC3gRQqrO62CgiH2Mo02hvabeY1Tf1WmZCQGsIY5kTQyL6IFbce++jHwTZ3pb2oLXMKNWFJNgIIsIfE76N1kHNhVWmE+YRbsT/0/oRxS/IOpIYkK+5enEJOygXOfQYtjJwcsHsq9wiQKi6G+lf5O78B/+xwge6H6G33CYIyWpzExtAAAAAElFTkSuQmCC" alt="" /></span><div><small>O ponto de atenção</small><strong>A receita ainda escapa antes da ativação</strong></div></article>
-            <article><span aria-hidden="true"><img src="data:image/png;base64,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" alt="" /></span><div><small>A decisão</small><strong>Organizar, melhorar e depois crescer</strong></div></article>
+            <article><span aria-hidden="true"><img src="data:image/png;base64,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" alt="" /></span><div><small>Atrair</small><strong>Buscar quem a rede pode atender</strong></div></article>
+            <article><span aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEgElEQVR4AWKgN6jYGMkPxGZArAvEfEDMyDBSAKB8O4Bs64kDOC7pKk26/qezapSCdJniX6wUULVShSoFmBSopi2tQmBa1FplFTCgAABFBkg2G7UosKIhUWzNZJA2XTZZG9K82xdBnSy9l77d617wAbi83y/3cr/73YVg+xFFAZd4hd5WCPwehrEHcU0ZO/A7PfgJJCHq+IUo/E4Mvh2z+ATRQAmb6HBS8D5EkIUBcYM8VuB1QvCd2EIBwoQ8luFT+Aw3erCIGJI1cawhgDa7gn+JIkQTzrAE3w2/K+PYR7HODCshhRC8OoPvwkYzwUvOMQ/PHz5nEmmFcU4RQpuO4F0I4yeEBXKYkh++Nu1jEIpSCOhIwBO8hbCIgWNMw3styav4DqGohDUdCRhFFsJCBr5gHWOYwxGESXG9CbDeBTLIQzQhqf8VsJ/2BLgxgwyquEIVwm6I6VoGPRhEGLtI4AQXEDYpYtGOPYAPXehDBDkIzQzso8fu0tiDBZQ1B5/GONxWfKNBjNYE0W5yjCEcQGhQwBtM4t5tg7+PMN4hW/MOM/CYGOcx4hqCP8IqHlm1sdnADwhJGoMmxhpBSsM3Pwe3jl1dBWG0K44X0rAsZvDMqmbGlhy85Aq7inv3AbzXMP0rWEfHbQuaiEIzo4oEum4YrxvbqEBo8BnTcDe7pZ3FVwgFJ+hrMN5DvEAJQqNjTMFj9pufwKHJTUoEHXUSGcC27uBrDOQwj07VBAzjI4RJ37CAIQTxFM/xARUIG51jCT6VE5s9iCaVcIAEDm2u/WVnWIa30VldFMLBTuWWu7xEnUE4XAGb8MsJCOISogWUEEWvvE6/RhmiBVxiR05CL3ZaaCaU8RrdchKiKLXQTAjKvwd+bKIA4XBnGKi3KnixglMIB4viwZ9qAy+W79jyeIFDJHBwy1d1D/0qW+IlnEPYqIIPeI6nCGIIC/gGYdJHDJtpiswjB8OmdXsbAbikZ+tAxGTZfYgJuM12dKdwbEPwL/CwwbP14QRCwVfMwtVsk2QanzVO+210K9xHSKCqUAZHbtUrrE25dU1b3PcYUGzd7eLqhpOhLfis6BU+QwbiL6oiZOK8IoxKg+BfotOqw885DUVSCiMmnmsQaQjJD2xYFfwjrOJIw/SP47HJH+mZOgc3Ydy34pbnJN5oLI8PMKTh6E5pyo8jDUPzTm0BHrtPdHuwb1MBlEMEfeiCD+26E7CIos21/wkS2EUYg9pmhnQXzzbSdZsMZuDWkYAkxB30Fk/ucgLyyPzFs4EsRnUkIN7k5YQ5jGEdX2D8qwlYM9l0+I5VuK41VaZxDONffAUCJm90xNAjjdGGKQtviP1EGC4dCWhDCKeK9ftYg1J13oLOUhEb6NJZC3gRQqrO62CgiH2Mo02hvabeY1Tf1WmZCQGsIY5kTQyL6IFbce++jHwTZ3pb2oLXMKNWFJNgIIsIfE76N1kHNhVWmE+YRbsT/0/oRxS/IOpIYkK+5enEJOygXOfQYtjJwcsHsq9wiQKi6G+lf5O78B/+xwge6H6G33CYIyWpzExtAAAAAElFTkSuQmCC" alt="" /></span><div><small>Qualificar</small><strong>Entender cobertura, uso e intenção</strong></div></article>
+            <article><span aria-hidden="true"><img src="data:image/png;base64,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" alt="" /></span><div><small>Vender certo</small><strong>Indicar o plano que resolve a necessidade</strong></div></article>
+            <article><span aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFh0lEQVR4AWKgIRgFe+9+YQOQbw9AkmtfHMfX3v3b/2f7rW0bhYe1bdu2bdu2bXOwtka10zPnfU/VXWa0GXa6qj5VXUnfe8/vJp3MBPgrPsS3yIjcyBWO3MiIb00bbZvCnQInxt9MiNJohXFYgzO4A4nEHfPdNaZtK9NXRtN34oQYPDVyowmm4Qj8IDHEz/Q5zYyRG6kTwtb+EJUxFacQBIllQWasqahsakgc1+H/h2bYglsIhcSxUDP2FlPL/+IieDpUwmY8sQSPH6Gmls2mtnSxtbt/g0m4CxckgXGZ2iaZWhPHVPiUKINjCIYkcMGm1jJIGd3wf0dDPEQoxE2Empobaga74f+NwXgKcVNPTYZ/2wk/DP4QN+dvsvw7quFToS/8IA7hZzKlisoE1MU9iMPc02yRhS+E8xCH0myFwgv/ERZDHE4zfvRu+KSojSCIwwWZrEnfnICvcATiITTrVy/DJ0MNiIepodl1Av6DTRAPs0mz6wTkwlOIh3mq2XUC2iIY4mGC0VYnYCVC7HSy5cpz2XTpmWw0Nl9+HsV2frLpsmkHPrMsamMyxut2oAa7ExCi2XUCfOz8p6eDj9h4Qcr3XS75O8yRgp3mScNJ22Xh0duRtp2621t+H7ZOCnSYq/SzLou0HX3rGDqWjqljaw1ai93/GH0S2d36IzddkDxtZ8m39cfLN/XGYbx812C81Bi1UZadvCfbrvlb2mxn2cx9vlKm15LX7aCfdZmu225tp31pn9o3Y2g7mHbUoLXY3gsS2WhEQX7y65A1WsBbvsHPTSbLqM0XZYd3gKXdTu9AaTN7HyEmWNrqMl3Hdyzt6Ev71L51DEtbrUVrspPF5gT4S2m22Nd1x1qK+bLOGBmy7ixBrBOwyydQGk/eIV/UHmNpp8t0Hd+xtKMv7ZO+re20Bq2FmuJ2Airw+zO7ocWwDefC3gMI12zaLvnKOnG6TNfxnbD3APoMcyytgVridgJU5wWHdZc0k2BC1BkrpXoukdkHb8h2L39rEK8APWhJ7razNPCb4XWZrtPvWNppX9qn9q1jvBlea9Ba7OZIZPd636ozD6X1zL2SvdUMLUR/w1Km91IZs+VShKfDDRefSu/lJ6RAx7kvg+hnXabrIjz9ad86ho6lY+rYWgO12L5uqBOwCyF2DoRrzz3WI7dM3uUlU3Z76WlKC2VdxD8fDTrn4E2Zou2gn3UZ6yIcT/vWMXQsHVPHpga7B8AQ7NIJGIhgu2cD3T2NCANYT4mmnYp6Ox3jnTHt/yWo2XUCyiIQ4mECNfvLK0GnIR5GM3+kE5AW3SAeRjOnfXlRJDN8IR7iNrK+eUksLXpCPEQ/pH/3wmhGHIY4nGbMGNZl8SSog4cQh3poMiYJ795AWoyEC+IwLpMtbWR3h/6LFRCH0Uz/jeoN0izY7pA9wWWyZLEmjXwStsHl5uE1Qxa7zwVlwiy43DT8LJPB/vNC5pgwAPchbuK+qfm/Mfl4XGU3uH8YggOognQx/ahcGgyFJFA30Rffx8oD1uaR1KWQBOQFHmAeCiJtbD4lmhuXE8hu/gxeGItCSIcksRk+CRrG8xH9AS5iLVriEyS3cYS3fSZYaLPwy7iK+1G88hSAx7iGo9iECWiATEgZH4/G58Q9G7vqVpRBKdRCWwzGsHAMR0cTtowJ/A/7WznmToH9IO/pKHIgibu/9/MzbkDew0YUQHJ3D58aQ+F6j9PSGmRBYncPnxg/4TYkCp5hPD5x393euvWn4UUUDnaX0AoZnPTOXwXcjeTe2m0sR3YkdVL4z7E7kmtra1EZ6Z32tmcqDEZAGFvcF3NQH/9HYie+7loZt94I/Qib0AOl8Vcnv+tbBAdwAQvQHiXwBVJ4wsvO/0FWfIs/BmJzDHMvjwIABFZNcMLFCDAAAAAASUVORK5CYII=" alt="" /></span><div><small>Permanecer</small><strong>Acompanhar ativação, satisfação e evolução</strong></div></article>
           </div>
 
           <div class="dual-thesis">
@@ -115,11 +146,11 @@
 
             <article class="thesis-card thesis-card--digital reveal">
               <div class="thesis-card__label">Digital</div>
-              <h3>Junho quebrou a lógica de que mais lead significa mais venda.</h3>
+              <h3>Junho mostrou que o lead qualificado vale mais que o lead barato.</h3>
               <p>
                 De maio para junho, os leads caíram 18,4%, as vendas cresceram 2,4%
-                e a conversão avançou 6,28 pontos. O ganho veio de leads com melhor
-                chance de compra, não de mais volume.
+                e a conversão avançou 6,28 pontos. A próxima vantagem é usar o WhatsApp
+                para entender o cliente e defender valor, não apenas informar preço.
               </p>
               <ul class="metric-list">
                 <li><strong>30,91%</strong><span>conversão final em junho</span></li>
@@ -133,8 +164,8 @@
           <aside class="decision-strip reveal" aria-label="Direção recomendada">
             <span>Decisão do próximo ciclo</span>
             <p>
-              Manter o bom resultado de junho e aumentar o volume apenas nas regiões,
-              campanhas e públicos que tragam cobertura, ativação e receita.
+              Escalar apenas os públicos com cobertura e intenção, transformar o WhatsApp
+              em uma conversa consultiva e medir ticket, ativação e permanência por origem.
             </p>
           </aside>
         </div>
@@ -349,9 +380,9 @@
           <header class="track-header reveal">
             <div>
               <p class="section-index">03. Vendas pelo Digital</p>
-              <h2 id="digital-title">Junho vendeu mais com menos leads. Agora é hora de repetir o que funcionou.</h2>
+              <h2 id="digital-title">No Digital, qualidade precisa virar uma máquina repetível de receita.</h2>
             </div>
-            <span class="source-tag source-tag--crm">Resultado oficial e base do CRM até 18/06</span>
+            <span class="source-tag source-tag--crm">Resultado oficial, CRM até 18/06 e GrowthPack publicado</span>
           </header>
 
           <div class="month-grid">
@@ -386,20 +417,101 @@
 
           <article class="narrative-pivot reveal">
             <div class="narrative-pivot__equation" aria-label="Sequência que explica o resultado">
-              <span>Menos desperdício</span>
+              <span>Cobertura confirmada</span>
               <i aria-hidden="true">→</i>
-              <span>mais leads atendíveis</span>
+              <span>necessidade entendida</span>
               <i aria-hidden="true">→</i>
-              <span>mais tempo por oportunidade</span>
+              <span>plano certo</span>
               <i aria-hidden="true">→</i>
-              <span>mais conversão</span>
+              <span>ativação acompanhada</span>
+              <i aria-hidden="true">→</i>
+              <span>mais chance de permanência</span>
             </div>
             <p>
-              O resultado é claro: o time vendeu melhor. A explicação mais provável é
-              simples. Leads com melhor chance de compra receberam mais atenção. Antes
-              de aumentar a mídia, precisamos confirmar quais campanhas e cidades fizeram isso acontecer.
+              A recorrência começa antes da venda. Quando o time confirma cobertura,
+              entende o uso e indica o plano certo, o cliente percebe valor e chega à
+              instalação com a expectativa correta.
             </p>
           </article>
+
+          <section class="whatsapp-lab reveal" aria-labelledby="whatsapp-title">
+            <div class="whatsapp-lab__copy">
+              <p class="section-index">WhatsApp consultivo</p>
+              <h3 id="whatsapp-title">A conversa deixa de ser balcão e passa a construir valor.</h3>
+              <p>
+                O objetivo não é responder apenas preço e velocidade. É descobrir se a ST1
+                atende o endereço, entender o uso da casa e mostrar por que o plano indicado
+                faz sentido para aquela rotina.
+              </p>
+              <ol>
+                <li><span>01</span><div><b>Confirmar cobertura</b><small>Bairro, rua e ponto de referência antes da oferta.</small></div></li>
+                <li><span>02</span><div><b>Entender o uso</b><small>Home office, estudos, jogos, TV e quantidade de pessoas.</small></div></li>
+                <li><span>03</span><div><b>Indicar com contexto</b><small>Explicar o plano pelo problema resolvido, não apenas pelo preço.</small></div></li>
+                <li><span>04</span><div><b>Continuar depois da venda</b><small>Ativação, satisfação e momento certo para upgrade ou indicação.</small></div></li>
+              </ol>
+            </div>
+
+            <div class="whatsapp-phone glass-reactive" aria-label="Exemplo animado de conversa consultiva no WhatsApp">
+              <header>
+                <span class="whatsapp-phone__avatar"><img src="/assets/st1-logo-white-Bha_TECo.png" alt="" /></span>
+                <div><b>ST1 Internet</b><small>atendimento inteligente</small></div>
+                <i aria-hidden="true">•••</i>
+              </header>
+              <div class="whatsapp-phone__chat">
+                <p class="chat-message chat-message--st1">Oi, Ana! Antes de indicar um plano, posso confirmar seu bairro e como você mais usa a internet?</p>
+                <p class="chat-message chat-message--lead">Cohab. Trabalho em casa e usamos duas TVs à noite.</p>
+                <p class="chat-message chat-message--st1">Perfeito. A cobertura está disponível. Vou te mostrar a opção que sustenta trabalho e entretenimento sem vender além do que você precisa.</p>
+                <div class="chat-quality-tags"><span>Cobertura confirmada</span><span>Uso mapeado</span><span>SQL pronto</span></div>
+                <div class="chat-typing" aria-label="ST1 está digitando"><i></i><i></i><i></i></div>
+              </div>
+              <footer><span>Automação organiza</span><b>O time humano orienta</b></footer>
+            </div>
+          </section>
+
+          <section class="growthpack-proof reveal" aria-labelledby="growthpack-title">
+            <header>
+              <div>
+                <span>Recorte de mídia atribuída</span>
+                <h3 id="growthpack-title">Junho trouxe mais qualidade comercial com menos custo.</h3>
+              </div>
+              <span class="scope-note">GrowthPack mensal. Não representa o total oficial do Digital.</span>
+            </header>
+            <div class="growthpack-proof__metrics">
+              <article><span>Lead qualificado que virou venda</span><strong>87,45%</strong><small>6,39 pontos acima de maio</small></article>
+              <article><span>Custo por venda</span><strong>R$ 27,08</strong><small>62,5% menor que em maio</small></article>
+              <article><span>Custo por lead qualificado</span><strong>R$ 23,68</strong><small>59,5% menor que em maio</small></article>
+              <article><span>Receita atribuída</span><strong>R$ 20.414</strong><small>84,8% maior que em maio</small></article>
+            </div>
+            <div class="growthpack-proof__action">
+              <div><b>A conversão ganhou força. O ticket ainda pede estratégia.</b><span>Abra o histórico para ver a evolução real, mês a mês.</span></div>
+              <button class="ticket-details-button" id="ticketDetailsButton" type="button" aria-expanded="false" aria-controls="ticketDetails">
+                Ver ticket e evolução mensal <span aria-hidden="true">+</span>
+              </button>
+            </div>
+
+            <div class="ticket-details" id="ticketDetails" hidden>
+              <header>
+                <div><span>Ticket médio do Digital</span><h4>O valor ficou estável no trimestre; o próximo ganho é vender melhor, não vender mais caro a qualquer custo.</h4></div>
+                <div class="ticket-details__summary"><b>R$ 101,89</b><small>média ponderada de abril a junho</small></div>
+              </header>
+              <p class="ticket-swipe">Deslize para ver todos os meses →</p>
+              <div class="ticket-timeline" aria-label="Ticket médio de janeiro a julho de 2026">
+                <article style="--ticket:84%"><span>Jan</span><i></i><strong>R$ 113,18</strong><small>base</small></article>
+                <article style="--ticket:80%"><span>Fev</span><i></i><strong>R$ 112,03</strong><small class="is-down">1,01% menor</small></article>
+                <article style="--ticket:72%"><span>Mar</span><i></i><strong>R$ 109,86</strong><small class="is-down">1,94% menor</small></article>
+                <article style="--ticket:44%"><span>Abr</span><i></i><strong>R$ 102,06</strong><small class="is-down">7,10% menor</small></article>
+                <article style="--ticket:48%"><span>Mai</span><i></i><strong>R$ 103,25</strong><small class="is-up">1,17% maior</small></article>
+                <article style="--ticket:40%"><span>Jun</span><i></i><strong>R$ 101,06</strong><small class="is-down">2,12% menor</small></article>
+                <article class="is-partial" style="--ticket:82%"><span>Jul*</span><i></i><strong>R$ 112,85</strong><small class="is-up">11,67% maior</small></article>
+              </div>
+              <div class="ticket-details__reading">
+                <article><b>O que já aconteceu</b><p>Junho converteu melhor e reduziu o custo de venda, mas o ticket ficou 2,12% abaixo de maio.</p></article>
+                <article><b>O que fazer agora</b><p>Usar a necessidade do cliente para indicar o plano certo e criar ofertas de upgrade apenas depois de ativação e satisfação.</p></article>
+                <article><b>Como proteger LTV</b><p>Medir ticket junto com ativação, permanência em 30, 90 e 180 dias e motivo de saída por origem.</p></article>
+              </div>
+              <p class="ticket-details__source">Janeiro a junho fechados. Julho parcial na planilha publicada em 14/07. A base atual não possui tempo de permanência suficiente para calcular LTV real.</p>
+            </div>
+          </section>
 
           <div class="dashboard-grid dashboard-grid--efficiency">
             <article class="panel panel--wide reveal">
@@ -682,39 +794,39 @@
           <section class="fca reveal" aria-labelledby="fca-title">
             <header>
               <p class="section-index">Fato, causa e ação</p>
-              <h3 id="fca-title">Junho mostrou o caminho. Agora precisamos repetir o acerto.</h3>
-              <p>Uma leitura simples para sair do número e chegar à ação.</p>
+              <h3 id="fca-title">Junho mostrou o caminho. Agora a qualidade precisa continuar depois da venda.</h3>
+              <p>Uma leitura simples para ligar conversão, ticket e permanência.</p>
             </header>
             <div class="fca-grid">
               <article>
                 <div class="fca-icon" aria-hidden="true"><img src="data:image/png;base64,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" alt="" /></div>
                 <span>O que aconteceu</span>
-                <h4>Junho vendeu mais com 594 leads a menos.</h4>
+                <h4>Junho vendeu mais com 594 leads a menos, mas o ticket ficou estável.</h4>
                 <p>
-                  O Digital fez 813 vendas e chegou a 30,91% de conversão. Foi o
-                  melhor resultado do trimestre, mesmo recebendo menos leads que maio.
+                  O Digital fez 813 vendas e chegou a 30,91% de conversão. No recorte
+                  de mídia, o ticket foi R$ 101,06, 2,12% abaixo de maio.
                 </p>
               </article>
               <article>
                 <div class="fca-icon" aria-hidden="true"><img src="data:image/png;base64,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" alt="" /></div>
-                <span>Por que pode ter acontecido</span>
-                <h4>O time recebeu leads com melhor chance de compra.</h4>
+                <span>O que os dados sugerem</span>
+                <h4>A qualificação melhorou mais rápido que o valor da oferta.</h4>
                 <p>
-                  Campanhas mais focadas, consulta de cobertura e um atendimento mais
-                  organizado podem ter dado ao time mais tempo para vender bem.
+                  Mais SQL chegaram à venda e o custo caiu. Ainda falta usar a conversa
+                  para entender o uso e indicar o plano com melhor encaixe.
                 </p>
               </article>
               <article>
                 <div class="fca-icon" aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAALJklEQVR4AeXaBVQcybfH8R4G4rIWdyfEQ9zd7exDouvu7u7uLtgavB2y7u7u7u4et+H+v79sw5lDpkd6gNVzPmSWaSbcW1X3VlfH+Tf+lxv6NYCGaIHumI1jUYpXsQImuvjfIoCtkYlpOAxl+BzrsRGbEIb9mxJQH5nIw2V4A2tgCVjxTw68HebgDDyGtbAkhPHqPzHwLtgT5fgCYZgPm1D6Twq8M47G4/gNlqKNOPbvHnQQ7XEkXsQKWA1Zj9l/58Db4GC8tkXg5b9ZnoRcvM5Fkgn4HN3/jq2sKebjMayCuQj0d8sp+9HmFXxosy5/1Wad/5Totb6n93RNogkoQ4u/U/ANMRJX4idYJI3ygsKPbdgBV1mb7OmW0bi5paVniF7re3pP1+jaRBJwGBr+XUa9PQ7Dx7Bowc+/4nXrPnmZBes1NMdxouI9XaNr4yVhLabD+auDT8c0lHn1cU3pBQUfWbcJixRkQpQEZkKs5fACev7VCWiLY/EeKmDR5Pz/TzbmmDJrO3SWdZ26o3Vxtegz2oL1G3rOBJaDaoJXAs5D878yASMQwmqYxErA7CvfsBmXvGjziz+1+UXA9Iues9EHXmst+461QCCtehJUE1QYo3WH9ciD81ckIAN5eBkbYYnQVM5b/of+lKr/z6cFKhFdpiwzJxCITIAKo7pDtGXwGHr/FQlohVPxk9eU94FE/K4kaCZEJoDuUM9mXvZKtAScgfp1mYAAMnEDNsBqGjNBy0FrP14CvsRcOCknoCi9YwC9Mco1GtnIkuJg+6yi1r3a5Jf9oCr/EMKw2sBy0CxQYYy3BMrRJuUEFAY7pt/UrNOkooyOrxFsBcz1C97GO0UZnd4+efbhpfmlP3zmf8onXiNUGOkOsYrgb9ireix+Rj4dC/F2ZfDVEbydNXJH2/mSVyz31l98BuYjAVN2jNUGH0eXlBJAcM2wGz6BRVMcaGvnDcq1XS56qTL7dZIAWiT7hJ28NkIrcDQc3wm4vnGPbQvrdT6RIH/0DD6tvV3aZaLtfeK9/gPyWQPYJ2izpB1jtK3wi+jsOwEE1xaX43dYVMEOdl2TTDt898stj2mf6ujnsQFaxLTe5YLnLf+mb+LOADZL2jFq21w9+BU40iu2RILviBKshXmPfjs7c+xutvT6jy2H3uwnaCVNgS+86m07csnZdlmn8XZx92lKgiWyY0S0vv8a2iedAKp8sKxF5wEE9xTWw2JN/cvbj7F9jruL4P/wHfxCRvrAQ2+xC3vPtusb9bBiZpWSwEzwO5NW4WAEk0oAQaVhCp7DJlgshfW72EmzDrNcRiD5wDePGKP8gp005wi7tnnfqs9VEjQTmBV+gq/AY2gLx0u04BthDt6BxaPRv6LNCNv9lAeTnvqbr3dH/SJGXZ8V+dmaCSwHv6P/E+YjmHACrm/Sszk9fB/+8k9hiaAz2Bmjd7Gcm79NOvidLn3djsw92a7Zuh/TPSJ4aCaQGL+jL1egOZxYIke+JcGfiG8TDV6V/9qt+tpBB92YRNXnult/tr1PuMfOGbaE5dNVn1N9Vmk5qCb47SYfYySceKqCx8Xebc7Ln0Vq6XUfJlzoFt3wpR22x5V2aeeJCnzL4JkJWg7UBL/Br6s870smAdthR6bzUcyAq3j9DFZgI8Kxpv9ZTH+maULBL7vmfTthwXFM+f4KPOqM0nJg6qeyhyjzbnveCUhD/YIGXRsS1Fa8blPaonP/ogZdDuR1GX7BOlik6xv3tEP3vpYE/Bz3F9vt3Gfs7OHLrKBhd8/gtRxUE1QY3e6QrPcxDU6iYm9/G3Srd8vWnZqUtu7al8ScwS/6Pv5ABey6pr1t97Of8r7hYdTzS7+3fY9ebpd3HGeFGZ0VqGc9UU2gMPrdSK3CsUj3nwAPdw7KDDA70jQzsC+exNorWw+3xUWfeVb5JYWfamtMoewXt5iqJlAY/QYfRsi753vzexjSjhlxOuv/XSp1eIvgb1vBrfCrdtLco6ygQbe4wasmqDDSHfyu+5cxAk6dJEAOOKwsuPdJ9x1HAVwb2eI0gruxLM4ZukRTXp0iZvCqCSqMdAf9vN8NTz6cOk3A/92+Iphz2x+6y1pbtd45gNjvyJBdlDlLhyIKMPYmimtUGOkOqbS8U5FR5wnICf0WZMT+TMDm/v6VprFd0Xaku6WNHbwSdHGP6bbrec/6DT6MG9AKTp0kYPW1gwJ255D0L47t22xV6Zjx54buWp4f+nnj4qLP7ZjFZ2tXWLmljesaCuPex96hQPx6CJkI1HoC7N4hwd8uHdB8fcngcRbKvsZuzX5nU2jod+WhC9bucs2bdtqkfXUYkmDwHVQY1R3UIpMPnJarg9b8W74fCydVMd8k2AC2w/Z4FCutPHuD3TbUwrePtPsKjrJzJ+yqgBRYQvcOKozqDrTI5Kc+1+ugVafNHMC0gZMqzzfc4PuiBOtQYcuHmN031uypaRZ+bpY9m59txQ27JHzfoHWv7kCLTK7fu4nSQatOm3XkTp3JgpMqzzeY7pOY6s8ReBhmy4eaPTrJ7KU5Zi/PtTX3TLNQ+27GMwJL9NxA3UEtkn1CUrfNOmPUQatOm5VE96wiC06qon6TgLvjWZho5BW8vTJPwYt9dtZYu2Vb3comEHywvbqDWmRSI6/jNZ0xql7otFlH7u5nvl1rCSDgxrgU62BWDqa9O/LAK3Pt5Z2G2A2NOycUvLqDWiT7hIQ2OyRJx2s6Y9RBqwps9dOiX5BdWwlYgM9hooKnNa/AIxPwzPYDraRBp7jrnl9eLVL7hPhFj/d1sqTjNZ0x6qCVeuS1oRpV4wkg4AxcBqty+3CzF+dskYAHRmZZYVrs0Vd3UItknxA9eNY2t9L4SYcqOlnS8ZrOGHXQGjnqdZaAbLwAq3IHCXhpywTcM6i3FQSi3dezxYW6g1qk9gnaLGnHKLp3WHTj12HuInUrrfMEHaroZElLRYcs3oHXQQJ2waqEEjAg0653OpiSoJmg5aCaoMKo7qAWqX2CNkvnh+64I4dts+4d9jr5/mPPG5z/7lUtsjlPyNKhioImoOrHY54q9FS6OKNjJpxUVb0g2G1wDSyRJfBc7iBTEu5lJmg5qCaoMKo7qEVWsE/QZikcGvrjutDo+dkhC3IDJQ6bodMrnzT58LYezcOpCVUvCHZAtenvXQTlFQ8vu/gZflaf8R5awqmk8wQ86SP4T7AQ6XBqQuT0n4E/YJU82mB8XKuf0baZz7ga6XAi6WQpyVPo77AbgnBqSmXwAewNq85rI+SJa7hWP6OfXYGpSIuSgDZ4H5aA3/VonhrRDE5N0hf9Qs1wDsxT5FbYe+Td4DdP/Qo8iu3gVFdYr0u6e9C6DhbDWlyuf58Ap6bpi36hNiiFxRJ5M6TCqIBFr/U9veeOvPyKBQjCqU4HrTptdnd15mEDStAOjrfUl0A3PAmLq9wtjOoOd7j0Wt8rr7puEy7D1nC83MSRu547eDx82YSn0BFObScgC+/CasAm3I0ecGIpbNK9nvvwZSOsmuf07xNe2ykzAKe26EvlDvBnWIpWYzn6wEmEnkC5j+EswjuYQnsOwqlNlXuAUbAUbMQ7OBkd4STK7QbPwFwfYy7S4NS2zV823Dh4vM/AV3Jo8kS4NPtcXk9ABpxk6Fmk+0DW+PN77EtnaginLjhfHNc3bdPNg/MTDHg9PsVDOB87IQsBOH64D2SP0jNHgj/xuqa9msKpKw6VW6O2e5RAP8GbuB1XhcuyD9l48+AcXo9BLzSCkyo9lcaOuBgt4NSlyl1gK4zGKNcI9ENvtMe2sae3f+5a3w6t4NQ1fflP+x+uuj89N5E+2wAAAABJRU5ErkJggg==" alt="" /></div>
                 <span>O que fazer agora</span>
-                <h4>Repetir o que vende e cortar o que gera desperdício.</h4>
+                <h4>Transformar o WhatsApp em consultoria e acompanhar o cliente.</h4>
                 <p>
-                  Aumentar as campanhas e cidades que trazem vendas. Recuperar leads
-                  com chance real e cobrar origem, prazo e próximo passo no CRM.
+                  Confirmar cobertura, mapear necessidade, explicar valor e acompanhar
+                  ativação, satisfação e evolução do plano em 30, 90 e 180 dias.
                 </p>
               </article>
             </div>
-            <div class="fca-result"><span>Resultado esperado</span><strong>Mais vendas com o mesmo time e menos esforço perdido.</strong></div>
+            <div class="fca-result"><span>Resultado esperado</span><strong>Mais clientes bem atendidos, mais permanência e mais valor por relacionamento.</strong></div>
           </section>
         </div>
       </section>
@@ -723,57 +835,58 @@
         <div class="wrap">
           <header class="section-heading section-heading--center reveal">
             <p class="section-index">04. Plano para os próximos 90 dias</p>
-            <h2 id="decisao-title">Organizar. Melhorar. Crescer.</h2>
+            <h2 id="decisao-title">Qualificar. Entregar. Permanecer.</h2>
             <p>
-              Primeiro arrumamos a base. Depois melhoramos o atendimento. Só então
-              aumentamos a mídia nas cidades e campanhas que realmente vendem.
+              Primeiro identificamos o lead certo. Depois indicamos e entregamos o plano
+              certo. Por fim, acompanhamos a experiência para proteger recorrência e LTV.
             </p>
           </header>
 
           <div class="automation-flow reveal" aria-label="Fluxo automatizado recomendado">
-            <header><span>Automação recomendada</span><strong>Do lead à ativação, sem perder o próximo passo.</strong></header>
+            <header><span>Automação recomendada</span><strong>Do primeiro contato à permanência, sem perder o contexto.</strong></header>
             <div>
               <article><i aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADYElEQVR4AeyWA5AcXRSF5/9j27YLsW3btm3btu1SbKMUe1mMbWduzqlsF8OZfttvp19XfcFu973vfI37PKqPYXua/AfygJ3gM5A/8AbMACk9gXAgSAqwA3wD8pd8Bf1B7Kge/j9QGrwG8o9cA+mjuoBooBn47IOAjyB7IAho6lYBRoARYAQYAUaAEWAEGAFNAlEAww0Gp8D5PxAEvD4I+AYugXN/qH8Y1I/s8LHASSAa8AHMdOIJGAgeaSDgDijvhICYYDB46FBwLwgCdUA0p74DscAg8MABAbdAXRDd6Y9hXDAgkiXciAgfQ5eJEB/0jyQJ10E9NeH1l3DT1juvQEI8MEDRh/G2kndegYTYYJDNIzJYfXgFI9IGCV4rvPpRp98+wQuC1N955/cJes959fsE/ee8+hGp/5xXLEHBnNd9n/BA3zmvXkIc0BFcAc/AE3AcVNE6vIIRmRikB8lAAgfnvDnMEbx2YnJQH/QFA3whfOOUAVu7NRjQMUOiAV2zJFMBa7MHe7GnrzAjsya3wmcF68B9IL6CRQkWJ1ikYLEqYG32YC/29AdmXcfsFDATfAHiD2FY1PYejaRzpqTKBLA2e4T5L4Aw80wKuAe8fgvYMEX2DW0nAwpkkC6Z7ZfAmqzNHuxlgwAvs3vsCE9C10+W89P7yoSyBXCnkii4+0lYmz3Yyw4BxEsBYhdBaybI8maVlLwGrMna7GHnmm0VwDtzZHRnGVYom3SxTwJrsSZrs4emAixwh9a1qyk9c6Sy5VvAGqzFmqzNHloLCFk3SS4tGCazahRjAFtgLdZkbe0FWBLOTu0jU6sU8jc8a7CWgvAKBVgSzs/oJ8uaVpSeOVP9c3Bew2tZQ0F49QIsCdeWjJTdg1rL2FL5pHu25NIta/JfhubveA7P5TW8VmF49QIsCUGrJ8jF+UNlPzYxixuVk1HFc0m/fOmlb950hP/mz/g7nsNzeY0V3gEBKlj3Y59wa8VYub50FO8useDP+Duew3Ot6xwQ4B6MACPACDACjAAj4PayUeJmPGd61hc34zndo94LIC7lBQVsBV9dGJ6Zt1JAZfDQhQKYuTIFxAMjwWcXhWdWZo7nwUEJSSJ+8Ah8C+Dg35iRWZnZE3FYEmKDymBbgH4YmYnZmPH74LvSAW1aJ8Mt1/GtAAAAAElFTkSuQmCC" alt="" /></i><b>Lead entra</b><small>origem registrada</small></article>
               <article><i aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAKsElEQVR4Ad3aA3Qcax/H8QlqX9u2bdu2bTs2ixh1m6Sx6jZJlaSIavvavrfJ//0+e2fPmTPvbrKzmS3P+ZztmdX8f/NwNtru+k8Kzw3AIAwxGIRe8INmB/0/u52+uAPDkGmQjDdwDY5Hf/jtjQHcgS0QN/5GI8JwKQbsbQF8il8hXWjHKsTgnL0pgPMwDV9hEzZiA36AuPAP5uFu9NwbAlBOxTW4ApfrbsA7KMEvEJMt+ABDfBbASx+G+L34QXDgC+8H9TBSx3jOH5ov6bPAYbgF+fgDYvATPsdgWwOgSL/n3/uiJydxOf8Pwzjk68YhhBDu5PFo9EcPaN7Qm3F/DND1QSA0Az8cgOexFR0Q3S/4BANsCeDNL6LVVVeFJeEb/I1/sUP3L/7Cr/ga1XgBxxFYP4tX2A9PoBzTUY0kPIrjMMA09QXiSjRBDL7GAwjsfgBBMUcRQAEFiYfa8Q/W874QHs94+aPQAdC6wvedgLkQdKAdO3SbkIjL0dfUGq7CYojhvatwNvy8DiCjoGpQZOqoWP2qixfasYYgglQQ6NFF8z8NjZBObMWnONxU3DVohej+xRj09SqAddu+DSieNue+8OE5v6tiuqkDi/AWjuii/7+EGViItfjVzdQ3DieZQngSX5m6wo1eBdC6dssh0+cvmcsYoE5ebPI7SmkRN9Lke7rpBj1wPM7H9XgaWdgGMV3hQhwLTdcfmfjHsFgqRB9LASxctjZg8Yr1b8+sb/qDwclQgG1WIuSjyOTB0Lqiz+23oxx/QXR/IdW0ADoXKyG61bjYUgCLlq87hABaZtU3y8sf+SQA5VdaQgmPZ8Lfg+nRD0dirCmEbXjANCjmoR2Cn/GB1QCeJoAfZjU0yysfh/kqAKUdTbgXAVDf7Y9etMJ+6hF+0Jw4v0OQZ2jmSiUOgKZ72rR0nuBxAHxJAIoWr1jXUbuoTT6JHuar4o3W45URowsOXrJyw1V8fzABjOIxBBegvymE07Ha1AoegqY7B1shunL09DSAE9EGmdu0XKJScn0fAF7+OOy7McWTawhgM9/dbvAN3kNPQwCBCDV1hXhoul5YA9HV4khPA7gf2yD1baslM69MWAb7tPjn3v1cIkbkSu2ipULXE77bbA1uMgTgh3PxPURXjaPgHDTXQXQ1ONyjAGh6H/Ilv0CU8lnz5LVPwn0agJppsgi6adVGc+FGkaZuMAgthn1AKy6Fpj9uN40RfTxtAZkQRV2N2Y2tEpKc6bNWoD73VQIeVVQlTSs3dBZAoimAvsgxjPZbcBs0PITvILosK4NgAcSpcekaySmoUM3UZwG8H5YgpTPmypKVevN3LdQUQG9EY4dhiXwHNJxiWFKvxV1dBqAXfwBmQJyW0Aqqaurl/fAEdbK2F/9OcKxMrJguDYw37oqnWzrHAGMAAbgV3xqa+THQ4I/T9JZwEfp6GsBRqIM4LdYHw5QxBbYH8HZwjEysnKFamblgjilr6IItMr582tTErHFDoBnpreBC3IXj4W+qKQCa4mkAR6AWYkTTZDCcLx9EJMpzNoSgglTF51F8A0Uax5wFLSulaGotRU+X7Pxy+TRmuLBH+IH3vYkA1ytE94VaDWAwpkDM1IkOG5VnX7N3Ufx8ik8fVySvfxYpLJPlJRjeuwb3sDnzh2YHlwfNg6DxBKtqG+WjqKFetwI1kL4TEmdq9nrxzRQ/vkhe+zSis642n2DOh2YHlwc5oSyIO8wIatpSJ2m5+HcpngHP2+KdxuAgaN3l8iAn9SZ+hLgyr3mFRI7IEcLyuniKNjR7S8Urv+Mt9PZVADdiI8RtV6hpUE3Z8z7vonhlgd7nLRTvtAlXw98XARyGJnQ2L8uYksl0hTCPB7z/K751laSNK/SmeKUdUzHYFwH4IQf/QDrrCvFZ49Q63uI8rxc/1lF8d2aU3/AmAm0NQOEKqx3ht5DOqH1CcGK6yxNkRqF41/O8fuXtWEy14iTbA8ivmjmEEJq7CkCpdkyNycZm7Ji/s5ktWN66muftKl75E/Hwt7sFBOBtTvwPSFfjwaTJs9VA59wwOe4jzm5oUUVbn+qsW4EzbQ1AHwsORQs6IJ1RzXxs6RSafRQhfKHGBbV0VoWrLa6rqc5OfyEBfrYGwJXtgZc9aQWq0HoGNrWnVyFQJGNDmmOtXzStToaNzJPX7S/eqAGn2hqAoRVUQzwNYXRRtbzx+X8t4a2gGHk3NE5tZnxZvPIzXvVFAH64BhsthVBMCGxoKNrXhRvlop+tAegh9MNHXXYFAxUCd3hpCZE+L9xgCS6yPQBDVxgF8RQ3UVgHzKQLxNMKdkoAv+BRnwSgMKdfzF2aJVZCUCvAYgbBDyOS1OZpZ3SHD30SQPaYIr8R40vOKZkxr25u0wqPijeuE6pq6yV8WJaaHn0dQjL62xpAxrhiv4z8inMzCiqnQSZNraOPr2bA8zgErJcZC5pk+Kg8BscoX4aQjsG2BpA6ofR4Cp/OX4uIUxmLHH2D47EljtXgCscukp+894wA0vMrB2XkV6YYi1eyC6ulbOY8tcKzFIKaJlVw1bUNEps+RnWJ3bcLpOdVBFLsY/gJYpY1qVomVtdwVfUQLAZRt3iput3tHCDtCuAt2wbBEeOKj6LpN1NsB8SdPEKgGK9CaGSAVGNDGjvEt4NiutsiVuM6WwIYOnqSuvqf4U9IV8ZWzJSZDc1qxDfc9bE2XU6dt0iScyaodYP6owyrq8g/CS8kZUxhIDRPuX2Cq384V79FFeepnKLJTHcN3PBYpYryigqQP8ySzIml8lncCO4oxQqFqW22oocCOLfe/HL9G3uN4fx/P9v2AhT0BL6HWJE5SXWJ2TKjvsl4D9Arc5Ysk0Km3JTRBRIxPFuCElIdv0m8F57A75SJ8nl8Sgc7zg08F8KgvD80q9w+QTHjsQNiVTpyaQ0lM+dLzcI2grDeLYzjBH8x4mgZNYvapLquUUqZfYqnz/mxqq6xlOfuLZpa1wOaN1weZNEzhEIWQrqDKVTGlE13BKF+4GQp7XUQzjCwnaLzmldvembZ+m2Hr978tR80b7k8yMmfh1UQO0JQj6NLp0ne5BqpqKmnVbSq0d9K8X+hHtG4ldZwCEEEQOsulwfDR+TelZibvyUtr0IvxI4gQBhZLKBGEca4ipn079p/K2vqZ1NQFoWloxxTkY0MhOBRXITjMQCanVweZAq6j3t32z5kucofSkvqhDJJV2HoV9NrvF+FygwjUXzu+2GJf3Ij9bMZC5bsq/8qvT8OxBAMRj8EQjPwfQDc0r6CmWCt4+fpj0K5rRXruL8XnzlWho0tkhQCSZ1Y7ghFXVUl0zEDVINC9WNpvIbXUXCJDBtTJLEZY+WTmOHqp2/nguc3vuMx+EPbFVwe5MSGYDrEieMO6uQ/iEhiCkqVsKGZEpEy0nE147MnSEJuviTwGJU22nE8KDGduTzFcV+QVvXfZxg+E+twPPyg7Qpun+AK3c3jFoiPqKv/Dt/TE9qu4vaJqJSRvXhUG4tV6IDYaDvFx78XlrAftF2p0ye/iBveg5O9GePxrR1XHVPxOHeMB0Lb1bp8gf6b28G4BZFoxB8QD/2L5UjFAzgWgdB2B1bf0B8n4EI8TTMO5zEdmS58gBdxGU7BPtB2N915cw/GCBXIEDf6oCe03dn/AOOFlfbDyXfPAAAAAElFTkSuQmCC" alt="" /></i><b>Cobertura consultada</b><small>OZMap automático</small></article>
-              <article><i aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADEklEQVR4AWKgJ0grrTcE4o0AduwWJqE1juM4B+QWihY3TQwLCEUtVArg3Bm7mwRIt0d6otxAoDc2pIK3bzQy000ml3EC9ElTEM7/fu9GYuzsOW84ELcP7TzP+f+OzysWkA0L/IObwCH+UVgUHQisdBA9xAD+xBwCK3PohxjAXxBFxUMMoPTbAyjudQC8lIYQYogjAu2nA1i/VwRxxBCC5kcAKTRgYIoesgj/VAD/940sepjCQAMpr7/8LbpYQtZMjHGPsEI7ZYiismLx9xjDhKwt0cUtNC+Kv0MXJmSLER5wsuX5MySg4wmi6Ak6Ejjb0u4JHjCCbGGiiztobopPoYsVxMIQOkLrZy+RRx19mBCbTPRRRx6X67ZD0DGEWFihixQ0JwGE0cA3RMEAJRTQwgfEIx9ooYASBhAF32gg7CSAGAyIDRNMIT6ZYgKxwUDMSQBxTCB7boK4kwAi6MGE7CkTPUScBBBEFuM9DcHEGFkEFUq2XGtHkD0zwr3tCdBizR1CXFphBgNvGwzMsIK4NNyyN3Edgo4BxIEvvKKJCjJI4notiQwqaOIVXxAHBtBdFG85J5RsrgwrvKOKNMKKwy6NKt6xsjnjlxD060RYsLHOL9BGDkGHgefQxgKiYIqCX8VfoAVRMEcNV9BcnkWuUMMcoqCFCz8CyCtubxeo4dzDvs9Rw0Jx25z3uvhT1CEK2oj58AFiaEMU1HHqZecJ9BWXn5yPt1I5xeW4j4SXHeuK//pVaD5fy1UVh4JuZ7aNQkdxwyPKipcZL0jv4G4yjRfFS5UyHlHcoCOKYICfG3TwCXGhidAOAgihCXHhEx3cBPh5xhLiwgyVHd5QVzCDuLDEc8B6PCkzkNlhABkYEJcWAdeNAG9I7jCAJN4gbnkZwPUOA7jGMQCIW8chcJwEj8vgcSP0q7fC+3YY+gN/K16O6Id4HM7j3584Dv/Xvh0UAQCAQAhMaP86lvDhDFvhngcEDhGXmFPULQ6MQGPgKDxOkKDIkKRockRJqixZmi4vmJDMiKZuBzCAAaaczoqnv+bzC7d/bIEswYVcAAAAAElFTkSuQmCC" alt="" /></i><b>Vendedor definido</b><small>carga equilibrada</small></article>
-              <article><i aria-hidden="true"><img src="data:image/png;base64,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" alt="" /></i><b>Prazo acompanhado</b><small>alerta de atraso</small></article>
-              <article><i aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFSUlEQVR4AezQsQEBQRBG4T8D0fU0JdAJoKC7/KrajSYGxgNF2BF8r4Cn3bj6msIwwBGNcQwwTCHoFXQ4ouKGaNQNFUd0kMgCR5wRSZxxxELEUBDJFJhIjysimSt6EUck5SKRmf4DyK/bjsucAzYPcq2pUY4mCv7FD7Ft27Zt2861bdu217szU+l62JdoTjjZTiXXw+rqg+p+/T+/Ytv7qdj0ZgLWvfqPZPwdBGx+OwmnUtbhafEFxNU8xsuyq7iUuQM7omaQGL0J2PJuMp6VXETrUB1My0QYI74BRFfdx67oWdhAEvQjgLL/D7fzDmPEO4DPwRt0g2rY+m6KOn6cXgRwVI8mrkBdXym+hrbheh7H43UiYBy2Kukn1j1DyAjgazAtA+fTt1It+hDAwHY9Zx8G3N2wgwULF3QigFI+ELcQJR0ZkKB1qFZNgeV6TAHmdUb9txW3KG3YgVkhtvohtr+fhg26BEHm90FPDySo7S3m6GO9LmlwT8xcsfTHfEO4l3+Mc1+PQojV3vOSywiEfLCDYRnIbIrCzqgZlL4OBEzA6dQN6HV1QILmwSocT1rF0dejF2A5W9qZxaBmL33/EB4XneHI69ENsrN7WnIBnoDLXvpmCDkt8Sx99WiHmbtPJK9G12gzJOAUOZm8hpVi5BNACbO3z2mJE+V8X9BNpahgOVEfQ4Rtrss/AjtYlomCtmRF2DQ9LLF1KnpT+s2D1ZCgz9VJQ0QHT5DzfhydHKTUv4IhkH7ICOJV2TWWyPqYojQ5Rn2DkKCoPQ37YuczZkQ+ARz9I6p2bxyogATdoy24mLGd5zlmi5N5PgC//vAo7IiajuT6l6KCJ2D48a7iNktk3tcZAjhXD8Yv5qjhcMJS7I6Z/WOdXsYOuBn1BajozuW9w33+7yVg09sJKuquRVrDG9CVoS3lCYyyU1P20xbm4m8uRjiP6/tKYVkW7DDo6cWt3ENyy1tOgLw6q+srAfDpw/a7u/hwLGHFc5MypnERMoMi6SfUPuX1HVgaoxn5fgpiqu/jayAJj4vOYnvUdFuJkqTLmTtBH1+Chv4K7I9bwHn/+wngyxxOWKaidCXsMOobwuvyG7SjvqgEvsSemDmo7M6HJez07uQfDZP6+wngnDuhmg1WXoT9Aw+DJGz7gifHWBJVeQ++oEfU6aU1vqECw+c7o4BDKtrX95VBCtby6Y3vVIaY8wmZlH7PWJvI2m4ZrFH3XuL88viWd5PwtuImvgUMXFnNMdgdzTQ5DiRyr4r6xUJ/zx0YxY2c/YLA95uyAJ3W8u4ctqnfSoJ68XngdHhRegX8nR2YFjPo70XP/HM2SPAFuN5W3JEOpi4peGxJZybuF5wA1+wkaFfHHUtaxUDqCAE28WCJ6sNTvpkESloCru4+Uv7eprDJ4QgBAhKymmIQpJx/MjhlaIhy9B0gQN7BMcLH1zwWePZydI4041zaZqx79e+fv0mKMWFn1EyWsz9FCZ7AGE0O1gkRs0uMJLA75IPbmxk2UZ9NFTtLqitiCAiTwI0L7AO+l4SesXacTdvMl4/UfYLjwO7uSfF5DHl6wRGVwh/y4n3lXRY8kb9Rcosi4WbuQZXHG1jKiqzt2t4iFfVn67NTlPX+tey96BhutFXCsLePW1k4+hFEgJwEttBf9PpYUkcp6VM1Wu4VZsF0Nm0TyrtyYJrGJ5VhXksCawm9N0szQ7CVfqmaoOKONJR1ZaOwPYXbW9kg/R27xakEGqY0QPfHLeSLs9jh7zUjQFA+b/gwCB7dLzCI8GgAjG6aGt02N7pxcnTr7IjePD3it88DAFGxJtr6e+NTAAAAAElFTkSuQmCC" alt="" /></i><b>Cliente ativado</b><small>venda concluída</small></article>
+              <article><i aria-hidden="true"><img src="data:image/png;base64,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" alt="" /></i><b>Uso entendido</b><small>qualidade registrada</small></article>
+              <article><i aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFh0lEQVR4AWKgIRgFe+9+YQOQbw9AkmtfHMfX3v3b/2f7rW0bhYe1bdu2bdu2bXOwtka10zPnfU/VXWa0GXa6qj5VXUnfe8/vJp3MBPgrPsS3yIjcyBWO3MiIb00bbZvCnQInxt9MiNJohXFYgzO4A4nEHfPdNaZtK9NXRtN34oQYPDVyowmm4Qj8IDHEz/Q5zYyRG6kTwtb+EJUxFacQBIllQWasqahsakgc1+H/h2bYglsIhcSxUDP2FlPL/+IieDpUwmY8sQSPH6Gmls2mtnSxtbt/g0m4CxckgXGZ2iaZWhPHVPiUKINjCIYkcMGm1jJIGd3wf0dDPEQoxE2Empobaga74f+NwXgKcVNPTYZ/2wk/DP4QN+dvsvw7quFToS/8IA7hZzKlisoE1MU9iMPc02yRhS+E8xCH0myFwgv/ERZDHE4zfvRu+KSojSCIwwWZrEnfnICvcATiITTrVy/DJ0MNiIepodl1Av6DTRAPs0mz6wTkwlOIh3mq2XUC2iIY4mGC0VYnYCVC7HSy5cpz2XTpmWw0Nl9+HsV2frLpsmkHPrMsamMyxut2oAa7ExCi2XUCfOz8p6eDj9h4Qcr3XS75O8yRgp3mScNJ22Xh0duRtp2621t+H7ZOCnSYq/SzLou0HX3rGDqWjqljaw1ai93/GH0S2d36IzddkDxtZ8m39cfLN/XGYbx812C81Bi1UZadvCfbrvlb2mxn2cx9vlKm15LX7aCfdZmu225tp31pn9o3Y2g7mHbUoLXY3gsS2WhEQX7y65A1WsBbvsHPTSbLqM0XZYd3gKXdTu9AaTN7HyEmWNrqMl3Hdyzt6Ev71L51DEtbrUVrspPF5gT4S2m22Nd1x1qK+bLOGBmy7ixBrBOwyydQGk/eIV/UHmNpp8t0Hd+xtKMv7ZO+re20Bq2FmuJ2Airw+zO7ocWwDefC3gMI12zaLvnKOnG6TNfxnbD3APoMcyytgVridgJU5wWHdZc0k2BC1BkrpXoukdkHb8h2L39rEK8APWhJ7razNPCb4XWZrtPvWNppX9qn9q1jvBlea9Ba7OZIZPd636ozD6X1zL2SvdUMLUR/w1Km91IZs+VShKfDDRefSu/lJ6RAx7kvg+hnXabrIjz9ad86ho6lY+rYWgO12L5uqBOwCyF2DoRrzz3WI7dM3uUlU3Z76WlKC2VdxD8fDTrn4E2Zou2gn3UZ6yIcT/vWMXQsHVPHpga7B8AQ7NIJGIhgu2cD3T2NCANYT4mmnYp6Ox3jnTHt/yWo2XUCyiIQ4mECNfvLK0GnIR5GM3+kE5AW3SAeRjOnfXlRJDN8IR7iNrK+eUksLXpCPEQ/pH/3wmhGHIY4nGbMGNZl8SSog4cQh3poMiYJ795AWoyEC+IwLpMtbWR3h/6LFRCH0Uz/jeoN0izY7pA9wWWyZLEmjXwStsHl5uE1Qxa7zwVlwiy43DT8LJPB/vNC5pgwAPchbuK+qfm/Mfl4XGU3uH8YggOognQx/ahcGgyFJFA30Rffx8oD1uaR1KWQBOQFHmAeCiJtbD4lmhuXE8hu/gxeGItCSIcksRk+CRrG8xH9AS5iLVriEyS3cYS3fSZYaLPwy7iK+1G88hSAx7iGo9iECWiATEgZH4/G58Q9G7vqVpRBKdRCWwzGsHAMR0cTtowJ/A/7WznmToH9IO/pKHIgibu/9/MzbkDew0YUQHJ3D58aQ+F6j9PSGmRBYncPnxg/4TYkCp5hPD5x393euvWn4UUUDnaX0AoZnPTOXwXcjeTe2m0sR3YkdVL4z7E7kmtra1EZ6Z32tmcqDEZAGFvcF3NQH/9HYie+7loZt94I/Qib0AOl8Vcnv+tbBAdwAQvQHiXwBVJ4wsvO/0FWfIs/BmJzDHMvjwIABFZNcMLFCDAAAAAASUVORK5CYII=" alt="" /></i><b>Plano orientado</b><small>argumento por necessidade</small></article>
+              <article><i aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFSUlEQVR4AezQsQEBQRBG4T8D0fU0JdAJoKC7/KrajSYGxgNF2BF8r4Cn3bj6msIwwBGNcQwwTCHoFXQ4ouKGaNQNFUd0kMgCR5wRSZxxxELEUBDJFJhIjysimSt6EUck5SKRmf4DyK/bjsucAzYPcq2pUY4mCv7FD7Ft27Zt2861bdu217szU+l62JdoTjjZTiXXw+rqg+p+/T+/Ytv7qdj0ZgLWvfqPZPwdBGx+OwmnUtbhafEFxNU8xsuyq7iUuQM7omaQGL0J2PJuMp6VXETrUB1My0QYI74BRFfdx67oWdhAEvQjgLL/D7fzDmPEO4DPwRt0g2rY+m6KOn6cXgRwVI8mrkBdXym+hrbheh7H43UiYBy2Kukn1j1DyAjgazAtA+fTt1It+hDAwHY9Zx8G3N2wgwULF3QigFI+ELcQJR0ZkKB1qFZNgeV6TAHmdUb9txW3KG3YgVkhtvohtr+fhg26BEHm90FPDySo7S3m6GO9LmlwT8xcsfTHfEO4l3+Mc1+PQojV3vOSywiEfLCDYRnIbIrCzqgZlL4OBEzA6dQN6HV1QILmwSocT1rF0dejF2A5W9qZxaBmL33/EB4XneHI69ENsrN7WnIBnoDLXvpmCDkt8Sx99WiHmbtPJK9G12gzJOAUOZm8hpVi5BNACbO3z2mJE+V8X9BNpahgOVEfQ4Rtrss/AjtYlomCtmRF2DQ9LLF1KnpT+s2D1ZCgz9VJQ0QHT5DzfhydHKTUv4IhkH7ICOJV2TWWyPqYojQ5Rn2DkKCoPQ37YuczZkQ+ARz9I6p2bxyogATdoy24mLGd5zlmi5N5PgC//vAo7IiajuT6l6KCJ2D48a7iNktk3tcZAjhXD8Yv5qjhcMJS7I6Z/WOdXsYOuBn1BajozuW9w33+7yVg09sJKuquRVrDG9CVoS3lCYyyU1P20xbm4m8uRjiP6/tKYVkW7DDo6cWt3ENyy1tOgLw6q+srAfDpw/a7u/hwLGHFc5MypnERMoMi6SfUPuX1HVgaoxn5fgpiqu/jayAJj4vOYnvUdFuJkqTLmTtBH1+Chv4K7I9bwHn/+wngyxxOWKaidCXsMOobwuvyG7SjvqgEvsSemDmo7M6HJez07uQfDZP6+wngnDuhmg1WXoT9Aw+DJGz7gifHWBJVeQ++oEfU6aU1vqECw+c7o4BDKtrX95VBCtby6Y3vVIaY8wmZlH7PWJvI2m4ZrFH3XuL88viWd5PwtuImvgUMXFnNMdgdzTQ5DiRyr4r6xUJ/zx0YxY2c/YLA95uyAJ3W8u4ctqnfSoJ68XngdHhRegX8nR2YFjPo70XP/HM2SPAFuN5W3JEOpi4peGxJZybuF5wA1+wkaFfHHUtaxUDqCAE28WCJ6sNTvpkESloCru4+Uv7eprDJ4QgBAhKymmIQpJx/MjhlaIhy9B0gQN7BMcLH1zwWePZydI4041zaZqx79e+fv0mKMWFn1EyWsz9FCZ7AGE0O1gkRs0uMJLA75IPbmxk2UZ9NFTtLqitiCAiTwI0L7AO+l4SesXacTdvMl4/UfYLjwO7uSfF5DHl6wRGVwh/y4n3lXRY8kb9Rcosi4WbuQZXHG1jKiqzt2t4iFfVn67NTlPX+tey96BhutFXCsLePW1k4+hFEgJwEttBf9PpYUkcp6VM1Wu4VZsF0Nm0TyrtyYJrGJ5VhXksCawm9N0szQ7CVfqmaoOKONJR1ZaOwPYXbW9kg/R27xakEGqY0QPfHLeSLs9jh7zUjQFA+b/gwCB7dLzCI8GgAjG6aGt02N7pxcnTr7IjePD3it88DAFGxJtr6e+NTAAAAAElFTkSuQmCC" alt="" /></i><b>Cliente ativado</b><small>promessa entregue</small></article>
+              <article><i aria-hidden="true"><img src="data:image/png;base64,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" alt="" /></i><b>Relacionamento ativo</b><small>30, 90 e 180 dias</small></article>
             </div>
           </div>
 
           <div class="roadmap">
             <article class="roadmap-card reveal">
               <span>Dias 1 a 30</span>
-              <h3>Deixar o CRM confiável</h3>
+              <h3>Deixar a qualificação confiável</h3>
               <ul>
-                <li>Campos obrigatórios de origem, cidade, motivo e próximo passo.</li>
-                <li>Prazo diário para o primeiro contato.</li>
-                <li>Conversa individual e plano de ação por vendedor.</li>
-                <li>Conferência semanal de perdas e conversas.</li>
+                <li>Origem, endereço, cobertura, uso e próximo passo obrigatórios.</li>
+                <li>Marcar viabilidade e qualificação sem depender de anotação manual.</li>
+                <li>Roteiro de WhatsApp com perguntas simples e resposta humana.</li>
+                <li>Conferência semanal de qualidade e motivo de perda.</li>
               </ul>
-              <footer><b>Meta da fase</b> menos de 5% sem origem e menos de 10% sem próxima atividade</footer>
+              <footer><b>Meta da fase</b> menos de 5% sem origem e todos os leads qualificados com cobertura e necessidade registradas</footer>
             </article>
             <article class="roadmap-card reveal">
               <span>Dias 31 a 60</span>
-              <h3>Atender melhor cada oportunidade</h3>
+              <h3>Vender o plano certo e ativar bem</h3>
               <ul>
-                <li>Sequência de contatos para cada etapa e motivo de perda.</li>
+                <li>Argumento por perfil de uso, sem empurrar velocidade.</li>
                 <li>Consulta automática de cobertura antes da distribuição.</li>
-                <li>Distribuição de leads conforme a carga de cada vendedor.</li>
-                <li>Painel com tempo parado, recuperação e mês de entrada.</li>
+                <li>Alerta para venda sem próximo passo de instalação.</li>
+                <li>Painel com ticket, tipo de plano, ativação e origem.</li>
               </ul>
-              <footer><b>Meta da fase</b> mais leads avaliados e menos fila parada</footer>
+              <footer><b>Meta da fase</b> manter conversão, elevar adequação do plano e reduzir vendas sem ativação</footer>
             </article>
             <article class="roadmap-card roadmap-card--featured reveal">
               <span>Dias 61 a 90</span>
-              <h3>Aumentar vendas com qualidade</h3>
+              <h3>Começar a medir permanência e LTV</h3>
               <ul>
-                <li>Recuperar volume apenas em bairros e campanhas com cobertura.</li>
-                <li>Oferta de MESH, PME, planos maiores e indicação por perfil.</li>
-                <li>Públicos de mídia formados por vendas e perdas bem classificadas.</li>
-                <li>Previsão de vendas por vendedor, origem e cidade.</li>
+                <li>Contato de satisfação após ativação e no primeiro boleto.</li>
+                <li>Acompanhar permanência em 30, 90 e 180 dias por origem.</li>
+                <li>Oferecer upgrade apenas quando houver uso e satisfação.</li>
+                <li>Reinvestir onde venda, ativação e permanência caminham juntas.</li>
               </ul>
-              <footer><b>Meta da fase</b> manter a conversão enquanto o volume cresce com controle</footer>
+              <footer><b>Meta da fase</b> criar a primeira leitura de LTV por origem e aumentar valor sem perder qualidade</footer>
             </article>
           </div>
 
@@ -796,9 +909,9 @@
 
           <blockquote class="closing reveal">
             <p>
-              Nos próximos 90 dias, o foco é simples. Cuidar melhor de cada oportunidade,
-              vender onde a rede pode atender e acompanhar o cliente até a ativação.
-              Assim, a ST1 cresce com qualidade, previsão e receita.
+              O próximo salto da ST1 não vem de empilhar leads. Vem de transformar boas
+              conversas em clientes ativados, satisfeitos e bem atendidos por mais tempo.
+              É assim que conversão vira recorrência, ticket saudável e LTV.
             </p>
             <footer>Direção recomendada para julho a setembro de 2026</footer>
           </blockquote>
@@ -816,14 +929,14 @@
                 funil e perdas. É uma base acumulada e fica separada do resultado mensal.
               </p>
               <p>
-                <b>GrowthPack:</b> a planilha atualizada em 14/07 confirmou a estrutura,
-                os campos e os meses de entrada. Como a base atualiza etapas antigas,
-                os painéis mantêm o mesmo recorte das capturas em toda a apresentação.
+                <b>GrowthPack:</b> a <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDKVXTd-f5NT33ZPbe2iIt_JN_pMzw7GBmCq4gDhK5yWBx-GDL68hjhJwaCpsDKxE2t1Z8YNd4aZu0/pubhtml" target="_blank" rel="noreferrer">planilha publicada</a>
+                em 14/07 sustenta o ticket mensal, CAC, custo por SQL, receita atribuída
+                e as automações de viabilidade, qualificação, oportunidade, compra e reativação.
               </p>
               <p>
-                <b>Ticket médio:</b> a base não mostra um aumento claro no trimestre.
-                O tipo de plano e as ofertas são tratados como próximo passo, não como
-                resultado já conquistado.
+                <b>Ticket e LTV:</b> o ticket ponderado de abril a junho foi R$ 101,89.
+                A base ainda não mede permanência por grupo de entrada; por isso, LTV aparece
+                como meta de gestão, não como resultado já comprovado.
               </p>
             </div>
           </details>
