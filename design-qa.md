@@ -6,20 +6,26 @@
   - `/workspace/scratch/6a829d1b9495/work/pdf/contact-sheet.png`
   - `/workspace/scratch/6a829d1b9495/upload/logo-ST1-03 (2).png`
   - `/workspace/scratch/6a829d1b9495/upload/FireShot Capture 044 - ST1 Internet - Relatório B2C — Junho 2026_ - [relatorio-mensal-de-junto-st-1-inte-eight.vercel.app].pdf`
-- implementation screenshot path: unavailable
+- implementation screenshot paths:
+  - `/workspace/scratch/6a829d1b9495/work/st1-v3-contact-sheet.png`
+  - `/workspace/scratch/6a829d1b9495/work/qa-sections/01-hero.png`
+  - `/workspace/scratch/6a829d1b9495/work/qa-sections/05-radar.png`
+  - `/workspace/scratch/6a829d1b9495/work/qa-sections/07-csat.png`
+  - `/workspace/scratch/6a829d1b9495/work/qa-sections/13-presenters.png`
 - intended viewports: 1440 × 900 and 390 × 844
 - state: landing page loaded, charts animated, presentation mode available
 
 ## Full-view comparison evidence
 
-Blocked. The connected browser was unavailable and the local Playwright runtime
-did not contain a browser executable. The permitted browser download endpoint
-returned an invalid zero-byte archive, so no browser-rendered screenshot could
-be captured for side-by-side comparison.
+Completed with Chromium at 1440 × 900 and 390 × 844. The page was rendered with
+local Poppins fonts, animated charts, bundled logo, bundled emoji graphics, and
+all reveal states. Section captures cover the hero, PAP, Digital, CSAT, restriction
+matrix, FCA, 90-day plan, closing copy, and presenters.
 
 ## Focused region comparison evidence
 
-Blocked for the same reason. No pixel-level comparison was claimed.
+Completed. Focused screenshots were generated for 13 desktop regions and 13
+mobile regions. The revisions specifically verified the user-provided print areas.
 
 ## Static checks completed
 
@@ -39,22 +45,23 @@ Blocked for the same reason. No pixel-level comparison was claimed.
 - Dense seller data is inside a keyboard-focusable horizontal scroll container.
 - Important chart values are repeated in visible summaries or accessible tables.
 - `prefers-reduced-motion` removes decorative motion and preserves content.
+- Bundled emoji graphics render consistently without depending on the operating system.
+- Desktop and 390 px mobile render without horizontal overflow.
 
 ## Findings
 
-- P1 — Browser-rendered verification unavailable.
-  - Evidence: neither the connected browser nor a Playwright browser executable
-    was available.
-  - Impact: visual overflow, real font rendering, focus order, full-screen behavior,
-    and animation timing could not be proven in a real browser.
-  - Fix: open the deployed page in Chrome/Opera and capture both target viewports.
+- No P0, P1, or P2 visual defects remain in the checked regions.
+- One mobile presenter-title edge was found during QA and corrected by reducing
+  the responsive title scale.
 
 ## Comparison history
 
 - Iteration 1: build and static audit passed; browser capture blocked.
 - Iteration 2: hierarchy, official logo, storytelling, seller scope, chart interaction,
   reduced-motion behavior, and responsive rules were revised; build passed.
-- No pixel-level match was claimed because no rendered comparison existed.
+- Iteration 3: print-guided layout, copy, effectiveness width, delta labels, full
+  radar, CRM KPI hierarchy, CSAT stars, deadlines, animated FCA, automation flow,
+  and presenter closing were rendered and reviewed in desktop and mobile.
 
 ## Primary interactions intended for browser test
 
@@ -66,11 +73,14 @@ Blocked for the same reason. No pixel-level comparison was claimed.
 - Digital chart toggle between volume and conversion.
 - Point-level tooltip on the Digital chart.
 - Hero logo orbit, pointer parallax, staged story rail, and progressive funnel bars.
+- CSAT explanation toggle.
+- Automation flow, FCA animation, and presentation navigation through the closing.
 
 ## Console errors checked
 
-Not available without a browser runtime.
+No console errors or page errors in Chromium. Digital view toggle and CSAT details
+toggle were exercised successfully.
 
 ## Final result
 
-blocked
+pass

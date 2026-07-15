@@ -288,6 +288,17 @@ registerChart("deltaChart", (progress) => {
   ctx.save();
   ctx.beginPath();
   smoothLinePath(ctx, points);
+  ctx.lineTo(points.at(-1).x, margins.top + plotH);
+  ctx.lineTo(points[0].x, margins.top + plotH);
+  ctx.closePath();
+  ctx.fillStyle = palette.blue;
+  ctx.globalAlpha = 0.08 * progress;
+  ctx.fill();
+  ctx.restore();
+
+  ctx.save();
+  ctx.beginPath();
+  smoothLinePath(ctx, points);
   ctx.strokeStyle = palette.blue;
   ctx.lineWidth = 4;
   ctx.setLineDash([plotW * progress, plotW]);
@@ -307,10 +318,17 @@ registerChart("deltaChart", (progress) => {
       align: "center",
     });
     if (progress > 0.86) {
-      text(ctx, formatCompact(values[index]), point.x, point.y - 15, {
-        size: 9,
+      const label = formatCompact(values[index]);
+      const pillW = 48;
+      const pillX = Math.min(width - pillW - 2, Math.max(2, point.x - pillW / 2));
+      const pillY = Math.max(3, point.y - 32);
+      ctx.fillStyle = index === 4 ? palette.orange : palette.blue;
+      roundedRect(ctx, pillX, pillY, pillW, 20, 10);
+      ctx.fill();
+      text(ctx, label, pillX + pillW / 2, pillY + 10, {
+        size: 8.5,
         weight: 700,
-        color: index === 4 ? "#a85500" : palette.blue,
+        color: index === 4 ? palette.navy : palette.white,
         align: "center",
       });
     }
@@ -329,21 +347,43 @@ function drawDigitalChart(progress) {
   const series = isRate
     ? [
         { label: "Conversão final", values: [23.01, 24.63, 30.91], color: palette.orange },
-        { label: "Lead viável", values: [54.29, 49.35, 58.4], color: palette.cyan },
-        { label: "Viável → venda", values: [42.38, 49.91, 52.93], color: palette.mint },
+        { label: "Lead com cobertura", values: [54.29, 49.35, 58.4], color: palette.cyan },
+        { label: "Cobertura para venda", values: [42.38, 49.91, 52.93], color: palette.mint },
       ]
     : [
         { label: "Leads", values: [3120, 3224, 2630], color: palette.cyan },
-        { label: "Viabilidade", values: [1694, 1591, 1536], color: palette.yellow },
+        { label: "Com cobertura", values: [1694, 1591, 1536], color: palette.yellow },
         { label: "Vendas", values: [718, 794, 813], color: palette.mint },
       ];
   const compact = width < 560;
-  const margins = { left: compact ? 46 : 62, right: compact ? 24 : 52, top: 58, bottom: 48 };
+  const margins = {
+    left: compact ? 48 : 64,
+    right: compact ? 38 : 76,
+    top: compact ? 92 : 64,
+    bottom: 52,
+  };
   const plotW = width - margins.left - margins.right;
   const plotH = height - margins.top - margins.bottom;
   const max = isRate ? 65 : 3500;
   drawGrid(ctx, margins.left, margins.top, plotW, plotH, max, true, 5, isRate ? "%" : "");
   digitalHitAreas = [];
+
+  labels.forEach((label, index) => {
+    const x = margins.left + (plotW / (labels.length - 1)) * index;
+    if (index === labels.length - 1) {
+      ctx.fillStyle = "rgba(255,129,0,0.055)";
+      roundedRect(ctx, x - Math.min(58, plotW * 0.08), margins.top, Math.min(116, plotW * 0.16), plotH, 18);
+      ctx.fill();
+    }
+    ctx.save();
+    ctx.strokeStyle = index === labels.length - 1 ? "rgba(255,129,0,0.34)" : "rgba(154,186,216,0.1)";
+    ctx.setLineDash([3, 7]);
+    ctx.beginPath();
+    ctx.moveTo(x, margins.top);
+    ctx.lineTo(x, margins.top + plotH);
+    ctx.stroke();
+    ctx.restore();
+  });
 
   series.forEach((item, seriesIndex) => {
     const points = item.values.map((value, index) => ({
@@ -396,7 +436,10 @@ function drawDigitalChart(progress) {
       const formattedValue = isRate
         ? `${item.values[index].toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 2 })}%`
         : formatCompact(item.values[index]);
-      text(ctx, formattedValue, point.x, point.y - 16 - seriesIndex * 2, {
+      const labelOffset = isRate
+        ? seriesIndex === 0 ? 19 : seriesIndex === 1 ? -18 : 20
+        : -17 - seriesIndex * 2;
+      text(ctx, formattedValue, point.x, point.y + labelOffset, {
         size: compact ? 9 : 10,
         weight: 800,
         color: item.color,
@@ -416,13 +459,15 @@ function drawDigitalChart(progress) {
   });
 
   let legendX = margins.left;
-  series.forEach((item) => {
+  series.forEach((item, index) => {
+    const legendY = compact ? 16 + index * 22 : 18;
+    if (compact) legendX = margins.left;
     ctx.beginPath();
-    ctx.arc(legendX + 5, 18, 5, 0, Math.PI * 2);
+    ctx.arc(legendX + 5, legendY, 5, 0, Math.PI * 2);
     ctx.fillStyle = item.color;
     ctx.fill();
-    text(ctx, item.label, legendX + 16, 18, { size: 10, weight: 700, color: palette.muted });
-    legendX += compact ? 92 : 116;
+    text(ctx, item.label, legendX + 16, legendY, { size: 10, weight: 700, color: palette.muted });
+    legendX += 138;
   });
 }
 
@@ -463,8 +508,8 @@ digitalViewButtons.forEach((button) => {
     digitalCanvas.setAttribute(
       "aria-label",
       nextView === "rate"
-        ? "Taxas por mês: conversão final de 23,01%, 24,63% e 30,91%; viabilidade de 54,29%, 49,35% e 58,40%; conversão de viável para venda de 42,38%, 49,91% e 52,93%."
-        : "Abril: 3.120 leads, 1.694 viabilidades, 718 vendas. Maio: 3.224, 1.591 e 794. Junho: 2.630, 1.536 e 813.",
+        ? "Taxas por mês: conversão final de 23,01%, 24,63% e 30,91%; cobertura de 54,29%, 49,35% e 58,40%; conversão de cobertura para venda de 42,38%, 49,91% e 52,93%."
+        : "Abril: 3.120 leads, 1.694 com cobertura e 718 vendas. Maio: 3.224, 1.591 e 794. Junho: 2.630, 1.536 e 813.",
     );
     animateDigitalView();
   });
@@ -490,7 +535,7 @@ digitalCanvas?.addEventListener("pointermove", (event) => {
   digitalHover = closest;
   if (changed) drawDigitalChart(1);
   if (digitalTooltip) {
-    digitalTooltip.innerHTML = `<strong>${closest.month} · ${closest.label}</strong><span>${closest.value.toLocaleString("pt-BR", { minimumFractionDigits: closest.suffix ? 1 : 0, maximumFractionDigits: 2 })}${closest.suffix}</span>`;
+    digitalTooltip.innerHTML = `<strong>${closest.month}: ${closest.label}</strong><span>${closest.value.toLocaleString("pt-BR", { minimumFractionDigits: closest.suffix ? 1 : 0, maximumFractionDigits: 2 })}${closest.suffix}</span>`;
     digitalTooltip.style.left = `${Math.min(rect.width - 175, Math.max(4, x))}px`;
     digitalTooltip.style.top = `${Math.min(rect.height - 70, Math.max(4, y))}px`;
     digitalTooltip.classList.add("is-visible");
@@ -503,6 +548,14 @@ digitalCanvas?.addEventListener("pointerleave", () => {
   drawDigitalChart(1);
 });
 
+const csatDetailsButton = document.getElementById("csatDetailsButton");
+const csatDetails = document.getElementById("csatDetails");
+csatDetailsButton?.addEventListener("click", () => {
+  const expanded = csatDetailsButton.getAttribute("aria-expanded") === "true";
+  csatDetailsButton.setAttribute("aria-expanded", String(!expanded));
+  csatDetails.hidden = expanded;
+});
+
 registerChart("lossReasonsChart", (progress) => {
   const canvas = document.getElementById("lossReasonsChart");
   const { ctx, width, height } = setupCanvas(canvas);
@@ -511,7 +564,7 @@ registerChart("lossReasonsChart", (progress) => {
     ["Sem rede no local", 1015, "16,4%"],
     ["Atend. não comercial", 818, "13,2%"],
     ["Já possui serviço", 419, "6,8%"],
-    ["Sem viabilidade", 331, "5,3%"],
+    ["Sem cobertura", 331, "5,3%"],
     ["Condomínio inadequado", 319, "5,1%"],
     ["Kitnet / condições", 260, "4,2%"],
     ["Rede em construção", 252, "4,1%"],

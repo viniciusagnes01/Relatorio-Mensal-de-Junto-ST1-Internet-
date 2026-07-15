@@ -9,6 +9,10 @@ Landing page executiva e responsiva para apresentação dos resultados trimestra
 - Gráficos animados por entrada na viewport e contadores progressivos.
 - Radar Digital alternável entre volume e conversão, com tooltip por ponto.
 - Destaques de performance das cinco carteiras comerciais do Digital.
+- CSAT visual por estrelas, com explicação expansível para cada grupo.
+- Matriz de prioridades com ícones, responsáveis e prazos.
+- Fluxo de automação do lead até a ativação.
+- FCA animado e encerramento para Volney Ribeiro e Alrenice Lima.
 - Modo apresentação com navegação por setas e suporte a movimento reduzido.
 
 ## Executar localmente
